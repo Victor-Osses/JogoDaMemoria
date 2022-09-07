@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FCFCFC;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden !important;
+}
+
+body header#game-header {
+    /* height: 30vh; */
+    width: 100vw;
+}
+
+body header nav h1 {
+    line-height: 2em;
+    margin: 0 0 0 .7em;
+    width: auto;
+    font-size: 40px;
+    font-weight: 900;
+    color: #252525;
+    display: inline-block;
+    font-family: 'Secular One', sans-serif;
+}
+
+a {
+    width: auto;
+    all: unset;
+    cursor: pointer;
+}
+
+.d-flex {
+   display: flex !important;
+   flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.btn {
+    color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    padding: .8em 3.5em;
+    line-height: 1em;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.primary-color {
+    color: #F9A622;
+}
+
+.secondary-color {
+    color: #31485A;
+}
+
+.bg-primary {
+    background-color: #F9A622;
+} 
+
+.bg-secondary {
+    background-color: #DFE6EC;
+} 
+
+.bg-selected {
+    background-color: #31485A;
+}
+
+.form input {
+    margin-bottom: 15px;
+    font-size: 24px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0;
+    border: 1px solid #31485A;
+    padding: 10px 15px !important;
+    outline: none;
+}
