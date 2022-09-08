@@ -11,7 +11,7 @@ body {
     height: 100vh;
     background-color: #FCFCFC;
     font-family: "Montserrat", sans-serif;
-    overflow-x: hidden !important;
+    /* overflow-x: hidden !important; */
 }
 
 body header#game-header {
@@ -65,7 +65,6 @@ a {
     margin: 0;
     border: 0;
     padding: .8em 3.5em;
-    line-height: 1em;
     border-radius: 20px;
     cursor: pointer;
 }
@@ -86,7 +85,7 @@ a {
     background-color: #DFE6EC;
 } 
 
-.bg-selected {
+.bg-darkBlue {
     background-color: #31485A;
 }
 
