@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap');
-body main#game-section {
+body main#game-main {
   width: 100vw;
 }
 
-body main#game-section div.game-container .game-header,
-body main#game-section div.game-container .card-body,
-body main#game-section div.game-container .card-footer,
-body main#game-section div.game-container {
+body main#game-main div.game-container .game-header,
+body main#game-main div.game-container .card-body,
+body main#game-main div.game-container .card-footer,
+body main#game-main div.game-container {
   border: 0 !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
 
-body main#game-section div.game-container {
+body main#game-main div.game-container {
   width: 60vw;
   margin: auto;
 }
 
-body main#game-section div.game-container .game-header .game-mode {
+body main#game-main div.game-container .game-header .game-mode {
   position: relative;
   font-size: 22px;
   text-align: center;
@@ -30,8 +30,8 @@ body main#game-section div.game-container .game-header .game-mode {
   text-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-body main#game-section div.game-container .game-header .game-mode:after,
-body main#game-section div.game-container .game-header .game-mode:before {
+body main#game-main div.game-container .game-header .game-mode:after,
+body main#game-main div.game-container .game-header .game-mode:before {
   position: absolute;
   content: '';
   left: 50%;
@@ -43,13 +43,13 @@ body main#game-section div.game-container .game-header .game-mode:before {
   
 }
 
-body main#game-section div.game-container .game-header .game-mode:after {
+body main#game-main div.game-container .game-header .game-mode:after {
   top: -7%;
   animation: animted-line  4s ease-in-out infinite;
   animation-delay: 2s;
 }
 
-body main#game-section div.game-container .game-header .game-mode:before {
+body main#game-main div.game-container .game-header .game-mode:before {
   top: 98%;
   animation: animted-line 4s ease-in-out infinite;
 }
@@ -66,7 +66,7 @@ body main#game-section div.game-container .game-header .game-mode:before {
   }
 }
 
-body main#game-section div.game-container .game-header #grid-text {
+body main#game-main div.game-container .game-header #grid-text {
   font-size: 18px;
   padding: .7em .75em !important;
   border-radius: 0.375em !important;
@@ -81,12 +81,12 @@ body main#game-section div.game-container .game-header #grid-text {
   transition: padding .3s ease-in-out;
 }
 
-body main#game-section div.game-container .icon-container {
+body main#game-main div.game-container .icon-container {
   width: 1.8em;
   height: auto;
 }
 
-body main#game-section div.game-container .game-header .timer-container  {
+body main#game-main div.game-container .game-header .timer-container  {
   font-size: 18px;
   padding: 0.5em 1em !important;
   border-radius: 0.375em !important;
@@ -97,17 +97,17 @@ body main#game-section div.game-container .game-header .timer-container  {
   transition: padding .3s ease-in-out;
 }
 
-body main#game-section div.game-container .game-header #grid-text:hover  {
+body main#game-main div.game-container .game-header #grid-text:hover  {
   padding-right: 1.3em !important;
   padding-left: 1.3em !important;
 } 
 
-body main#game-section div.game-container .game-header .timer-container:hover {
+body main#game-main div.game-container .game-header .timer-container:hover {
   padding-right: 1.8em !important;
   padding-left: 1.8em !important;
 }
 
-body main#game-section div.game-container .game-header .timer-container svg {
+body main#game-main div.game-container .game-header .timer-container svg {
   width: 1.5em !important;
   animation: move 4s linear infinite;
 }
@@ -124,7 +124,7 @@ body main#game-section div.game-container .game-header .timer-container svg {
   }
 }
 
-/* body main#game-section div.game-container .game-header .timer-container  #timer-text {
+/* body main#game-main div.game-container .game-header .timer-container  #timer-text {
   animation: scale 1s linear infinite;
  } */
  
@@ -140,9 +140,9 @@ body main#game-section div.game-container .game-header .timer-container svg {
   }
 }
 
-body main#game-section div.game-container #btn-reset,
-body main#game-section div.game-container #btn-pause,
-body main#game-section div.game-container #btn-cheating-mode {
+body main#game-main div.game-container #btn-reset,
+body main#game-main div.game-container #btn-pause,
+body main#game-main div.game-container #btn-cheating-mode {
   background-color: #DFE6EC !important;
   border-radius: 0.375rem !important;
   padding: 0.35rem 0.5rem !important;
@@ -151,7 +151,7 @@ body main#game-section div.game-container #btn-cheating-mode {
   transition: box-shadow 0.5s linear transform 0.5s linear !important;
 }
 
-body main#game-section div.game-container .game-header #btn-reset svg {
+body main#game-main div.game-container .game-header #btn-reset svg {
   animation: rotate 6s infinite linear !important;
 }
 
@@ -165,20 +165,20 @@ body main#game-section div.game-container .game-header #btn-reset svg {
   }
 }
 
-body main#game-section div.game-container .game-body {
+body main#game-main div.game-container .game-body {
   padding: 20px 0px 20px 0px;
 }
 
-body main#game-section div.game-container .game-body div.d-flex {
+body main#game-main div.game-container .game-body div.d-flex {
   flex-wrap: nowrap;
 }
 
-body main#game-section div.game-container .game-body .piece-container {
-  padding: 10px 0px 10px 0px !important;
+body main#game-main div.game-container .game-body .piece-container {
+  padding: 10px 0px 5px 0px !important;
   width: 100%;
 } 
 
-body main#game-section div.game-container .game-body .piece-container button.piece {
+body main#game-main div.game-container .game-body .piece-container button.piece {
   padding: 16% 13% !important;
   width: 55%;
   font-size: 24px;
@@ -188,58 +188,58 @@ body main#game-section div.game-container .game-body .piece-container button.pie
   transition: background .2s ease, color .2s ease;
 } 
 
-body main#game-section div.game-container .game-body .piece-container button.piece.active {
+body main#game-main div.game-container .game-body .piece-container button.piece.active {
   background-color: #F9A622;
   color: #fff;
 } 
 
-body main#game-section div.game-container .game-body .piece-container button.piece.inactive {
+body main#game-main div.game-container .game-body .piece-container button.piece.inactive {
   background-color: #DFE6EC;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 } 
 
-body main#game-section div.game-container .game-body .piece-container button.piece:focus {
+body main#game-main div.game-container .game-body .piece-container button.piece:focus:not(.active) {
   background-color: #DFE6EC;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 @media (max-width: 1400px) {
-  body main#game-section div.game-container {
+  body main#game-main div.game-container {
     width: 85vw;
   }
 }
 
 @media (max-width: 991px) {
-  body main#game-section div.game-container .game-header .game-mode {
+  body main#game-main div.game-container .game-header .game-mode {
     font-size: 18px;
   }
 
-  body main#game-section div.game-container .game-header #grid-text {
+  body main#game-main div.game-container .game-header #grid-text {
     font-size: 16px;
     padding: .5em .55em !important;
   }
 
-  body main#game-section div.game-container .icon-container {
+  body main#game-main div.game-container .icon-container {
     width: 1.6em;
     height: auto;
   }
 
-  body main#game-section div.game-container .game-header .timer-container  {
+  body main#game-main div.game-container .game-header .timer-container  {
     font-size: 16px;
     padding: 0.3em .8em !important;
   }
 
-  body main#game-section div.game-container #btn-reset,
-  body main#game-section div.game-container #btn-pause,
-  body main#game-section div.game-container #btn-cheating-mode {
+  body main#game-main div.game-container #btn-reset,
+  body main#game-main div.game-container #btn-pause,
+  body main#game-main div.game-container #btn-cheating-mode {
     padding: 0.25rem 0.4rem !important;
   }
 
-  body main#game-section div.game-container #btn-cheating-mode img {
+  body main#game-main div.game-container #btn-cheating-mode img {
     width: 26px;
   }
 
-  body main#game-section div.game-container .game-body .piece-container button.piece {
+  body main#game-main div.game-container .game-body .piece-container button.piece {
     width: 60%;
     font-size: 21px;
     padding: 20% 13% !important;
@@ -247,30 +247,30 @@ body main#game-section div.game-container .game-body .piece-container button.pie
 }
 
 @media (max-width: 767px) {
-  body main#game-section div.game-container .game-header .game-mode {
+  body main#game-main div.game-container .game-header .game-mode {
     font-size: 16px;
   }
 
-  body main#game-section div.game-container .game-header #grid-text {
+  body main#game-main div.game-container .game-header #grid-text {
     font-size: 14px;
     padding: .5em .55em !important;
   }
 
-  body main#game-section div.game-container .icon-container {
+  body main#game-main div.game-container .icon-container {
     width: 1.6em;
     height: auto;
   }
 
-  body main#game-section div.game-container .game-header .timer-container  {
+  body main#game-main div.game-container .game-header .timer-container  {
     font-size: 14px;
     padding: 0.3em .8em !important;
   }
 
-  body main#game-section div.game-container #btn-cheating-mode img {
+  body main#game-main div.game-container #btn-cheating-mode img {
     width: 26px;
   }
 
-  body main#game-section div.game-container .game-body .piece-container button.piece {
+  body main#game-main div.game-container .game-body .piece-container button.piece {
     width: 75%;
     font-size: 18px;
     padding: 25% 10% !important;
@@ -278,33 +278,28 @@ body main#game-section div.game-container .game-body .piece-container button.pie
 }
 
 @media (max-width: 576px) {
-  body main#game-section div.game-container {
+  body main#game-main div.game-container {
     width: 90vw;
   }
 
-  body main#game-section div.game-container .game-body .piece-container button.piece {
+  body main#game-main div.game-container .game-body .piece-container button.piece {
     width: 80%;
     font-size: 15px;
     padding: 25% 5% !important;
   } 
 
-  body main#game-section div.game-container .game-header .game-mode {
-    display: none;
+  body main#game-main div.game-container .game-header .game-mode {
+    display: none !important;
   }
 }
 
 @media (max-width: 400px) {
-  body main#game-section div.game-container {
+  body main#game-main div.game-container {
     width: 95vw;
   }
-  body main#game-section div.game-container .game-body .piece-container button.piece {
+  body main#game-main div.game-container .game-body .piece-container button.piece {
     width: 85%;
     font-size: 14px;
     padding: 30% 10% !important;
   } 
-
-  body main#game-section div.game-container .game-header .game-mode {
-    display: none;
-  }
-
 }
