@@ -14,7 +14,6 @@ body main#game-section div.game-container {
 
 body main#game-section div.game-container {
   width: 60vw;
-  min-width: 550px;
   margin: auto;
 }
 
@@ -28,6 +27,7 @@ body main#game-section div.game-container .game-header .game-mode {
   text-transform: uppercase;
   word-wrap: break-word;
   font-family: 'Kanit', sans-serif;
+  text-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 body main#game-section div.game-container .game-header .game-mode:after,
@@ -40,16 +40,17 @@ body main#game-section div.game-container .game-header .game-mode:before {
   border-radius: 15px;
   width: 0%;
   background-color: #F9A622;
+  
 }
 
 body main#game-section div.game-container .game-header .game-mode:after {
-  top: -10%;
+  top: -7%;
   animation: animted-line  4s ease-in-out infinite;
   animation-delay: 2s;
 }
 
 body main#game-section div.game-container .game-header .game-mode:before {
-  top: 100%;
+  top: 98%;
   animation: animted-line 4s ease-in-out infinite;
 }
 
@@ -75,6 +76,14 @@ body main#game-section div.game-container .game-header #grid-text {
   letter-spacing: .1em;
   display: flex;
   align-self: center;
+  width: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: padding .3s ease-in-out;
+}
+
+body main#game-section div.game-container .icon-container {
+  width: 1.8em;
+  height: auto;
 }
 
 body main#game-section div.game-container .game-header .timer-container  {
@@ -83,6 +92,19 @@ body main#game-section div.game-container .game-header .timer-container  {
   border-radius: 0.375em !important;
   font-weight: bold;
   color: #1F3540;
+  width: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: padding .3s ease-in-out;
+}
+
+body main#game-section div.game-container .game-header #grid-text:hover  {
+  padding-right: 1.3em !important;
+  padding-left: 1.3em !important;
+} 
+
+body main#game-section div.game-container .game-header .timer-container:hover {
+  padding-right: 1.8em !important;
+  padding-left: 1.8em !important;
 }
 
 body main#game-section div.game-container .game-header .timer-container svg {
@@ -102,9 +124,9 @@ body main#game-section div.game-container .game-header .timer-container svg {
   }
 }
 
-body main#game-section div.game-container .game-header .timer-container  #timer-text {
+/* body main#game-section div.game-container .game-header .timer-container  #timer-text {
   animation: scale 1s linear infinite;
- }
+ } */
  
  @keyframes scale {
   33.3% {
@@ -118,12 +140,14 @@ body main#game-section div.game-container .game-header .timer-container  #timer-
   }
 }
 
-body main#game-section div.game-container .game-header #btn-reset,
-body main#game-section div.game-container .game-header #btn-pause {
+body main#game-section div.game-container #btn-reset,
+body main#game-section div.game-container #btn-pause,
+body main#game-section div.game-container #btn-cheating-mode {
   background-color: #DFE6EC !important;
   border-radius: 0.375rem !important;
   padding: 0.35rem 0.5rem !important;
   box-shadow: 0px 4px 0px #31485ac7;
+  width: auto;
   transition: box-shadow 0.5s linear transform 0.5s linear !important;
 }
 
@@ -141,21 +165,6 @@ body main#game-section div.game-container .game-header #btn-reset svg {
   }
 }
 
-body main#game-section div.game-container .game-header .icon-container {
-  width: 1.8em;
-  height: auto;
-}
-
-body main#game-section div.game-container .game-header button span {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-}
-
-body main#game-section div.game-container .game-header button span.turn-text {
-  transform: translateY(1.5px) !important;
-  font-weight: 900 !important;
-}
-
 body main#game-section div.game-container .game-body {
   padding: 20px 0px 20px 0px;
 }
@@ -166,13 +175,136 @@ body main#game-section div.game-container .game-body div.d-flex {
 
 body main#game-section div.game-container .game-body .piece-container {
   padding: 10px 0px 10px 0px !important;
-  width: calc(100% / 8);
+  width: 100%;
 } 
 
 body main#game-section div.game-container .game-body .piece-container button.piece {
-  padding: 20px !important;
+  padding: 16% 13% !important;
   width: 55%;
-  padding: 0 ;
-  font-size: 36px;
-  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 9px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: background .2s ease, color .2s ease;
 } 
+
+body main#game-section div.game-container .game-body .piece-container button.piece.active {
+  background-color: #F9A622;
+  color: #fff;
+} 
+
+body main#game-section div.game-container .game-body .piece-container button.piece.inactive {
+  background-color: #DFE6EC;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+} 
+
+body main#game-section div.game-container .game-body .piece-container button.piece:focus {
+  background-color: #DFE6EC;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+@media (max-width: 1400px) {
+  body main#game-section div.game-container {
+    width: 85vw;
+  }
+}
+
+@media (max-width: 991px) {
+  body main#game-section div.game-container .game-header .game-mode {
+    font-size: 18px;
+  }
+
+  body main#game-section div.game-container .game-header #grid-text {
+    font-size: 16px;
+    padding: .5em .55em !important;
+  }
+
+  body main#game-section div.game-container .icon-container {
+    width: 1.6em;
+    height: auto;
+  }
+
+  body main#game-section div.game-container .game-header .timer-container  {
+    font-size: 16px;
+    padding: 0.3em .8em !important;
+  }
+
+  body main#game-section div.game-container #btn-reset,
+  body main#game-section div.game-container #btn-pause,
+  body main#game-section div.game-container #btn-cheating-mode {
+    padding: 0.25rem 0.4rem !important;
+  }
+
+  body main#game-section div.game-container #btn-cheating-mode img {
+    width: 26px;
+  }
+
+  body main#game-section div.game-container .game-body .piece-container button.piece {
+    width: 60%;
+    font-size: 21px;
+    padding: 20% 13% !important;
+  } 
+}
+
+@media (max-width: 767px) {
+  body main#game-section div.game-container .game-header .game-mode {
+    font-size: 16px;
+  }
+
+  body main#game-section div.game-container .game-header #grid-text {
+    font-size: 14px;
+    padding: .5em .55em !important;
+  }
+
+  body main#game-section div.game-container .icon-container {
+    width: 1.6em;
+    height: auto;
+  }
+
+  body main#game-section div.game-container .game-header .timer-container  {
+    font-size: 14px;
+    padding: 0.3em .8em !important;
+  }
+
+  body main#game-section div.game-container #btn-cheating-mode img {
+    width: 26px;
+  }
+
+  body main#game-section div.game-container .game-body .piece-container button.piece {
+    width: 75%;
+    font-size: 18px;
+    padding: 25% 10% !important;
+  } 
+}
+
+@media (max-width: 576px) {
+  body main#game-section div.game-container {
+    width: 90vw;
+  }
+
+  body main#game-section div.game-container .game-body .piece-container button.piece {
+    width: 80%;
+    font-size: 15px;
+    padding: 25% 5% !important;
+  } 
+
+  body main#game-section div.game-container .game-header .game-mode {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  body main#game-section div.game-container {
+    width: 95vw;
+  }
+  body main#game-section div.game-container .game-body .piece-container button.piece {
+    width: 85%;
+    font-size: 14px;
+    padding: 30% 10% !important;
+  } 
+
+  body main#game-section div.game-container .game-header .game-mode {
+    display: none;
+  }
+
+}
