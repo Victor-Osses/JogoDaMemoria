@@ -18,6 +18,10 @@ h2 {
     width: 50%;
 }
 
+#user-info-form input:disabled {
+    cursor: not-allowed;
+}
+
 .row {
     width: 100%;
 }
