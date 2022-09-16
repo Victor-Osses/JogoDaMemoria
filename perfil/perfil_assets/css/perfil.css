@@ -4,12 +4,15 @@ h2 {
     margin-bottom: 20px;
 }
 
-form {
-    margin: 0 auto;
-    max-width: 70%;
+#edit-form {
+    width: 100%;
 }
 
-form input {
+#edit-form input, #edit-form label {
+    padding: 0.5em;
+}
+
+#user-info-form input {
     margin-bottom: 10px;
     min-width: 230px;
     width: 50%;
@@ -33,26 +36,30 @@ form input {
 
 .profile-img {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    margin: 20px;
+    width: 300px;
+    height: 300px;
+    margin: 1em 0;
 }
 
 input:invalid {
     border-color: red;
 }
 
-button.btn {
+#update-btn {
     margin-bottom: 10px;
-    font-size: 20px;
 }
 
-button.btn:active {
+#update-btn:active {
     box-shadow: 0px 0px 2px #31485A;
-
 }
 
-a {
+#update-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+a#return {
     text-align: center;
     text-decoration: none;
 }
