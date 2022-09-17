@@ -20,32 +20,53 @@
 
 <body>
     <header id="game-header">
-        <nav>
-            <a href="#">
+         <nav class="itens_menu">
+            <a href="index.html">
                 <h1 class="memory-title">memory</h1>
-            </a>
-        </nav>
-        <!-- <div id="game-config" style="padding: 0px 0px 30px 0px;" class="d-flex justify-content-center">
-            <button class="btn bg-primary" style="font-weight:bold;font-family: 'Montserrat';">Botão com configuração
-                ativa</button>
-            <button class="btn bg-secondary secondary-color" style="font-weight:bold;font-family: 'Montserrat';">Botão
-                com configuração inativa</button>
-            <button class="btn bg-darkBlue" style="font-weight:bold; font-family: 'Montserrat';">Select options com esse
-                background</button>
-        </div> -->
+              </a>
+            <ul class="itens_list" style="list-style: none">
+              <li><a href="ranking.html" style="" class="nav_link1">Ranking</a></li>
+             
+              <li>
+                <a
+                  style="vertical-align: middle"
+                  href="perfil.html"
+                  class="nav_link"
+                >
+                  <img class="img_perfil"
+                    style="width: 40px; height: 40px"
+                    src="img/perfil.png"
+                /></a>
+              </li>
+
+              
+            </ul>
+          </nav>
+      
+
+<br>
+<br>
     </header>
     <main id="game-main">
         <div class="game-container">
             <div class="game-header d-flex flex-wrap justify-content-between align-items-center">
                 <div class="game-mode d-flex align-items-center">
-                    <h2 id="game-mode-text" class="primary-color">
-                        classic mode
-                    </h2>
+                  <select style="text-align: center; font-weight: bold; border-style: none; "  id="game-mode-text" class="primary-color">
+            <option value="mode1">Classic mode</option> 
+            <option value="mode2">Time mode</option> 
+        </select>
                 </div>
 
                 <div class="d-flex">
-                    <span id="grid-text" class="bg-primary text-white">8x8</span>
-                    <div class="timer-container bg-secondary d-flex align-items-center justify-content-between">
+<select style=" border-style: none" id="grid-text" class="bg-primary text-white"name="tamanho">
+                <option value="valor1"selected>2x2</option>
+                <option value="valor2" >3x3</option>
+                <option value="valor2" >4x4</option>
+                <option value="valor2" >5x5</option>
+                <option value="valor2" >6x6</option>
+                <option value="valor2" >7x7</option>
+                <option value="valor2" >8x8</option>
+              </select>                    <div class="timer-container bg-secondary d-flex align-items-center justify-content-between">
                         <div class="icon-container time-icon-container d-flex align-items-center"
                             style="margin-right: 4px;">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
@@ -423,10 +444,14 @@
         </div>
     </sidebar>
 
-    <footer class="d-flex justify-content-center">
-        <a href="https://www.frontendmentor.io/challenges/memory-game-vse4WFPvM" target="_blank">Design credits to <span
-                style="text-decoration: underline;">Front End Mentor</span></a>
-    </footer>
+      <!-- <footer class="d-flex justify-content-center">
+      <a
+        href="https://www.frontendmentor.io/challenges/memory-game-vse4WFPvM"
+        target="_blank"
+        >Design credits to
+        <span style="text-decoration: underline">Front End Mentor</span></a
+      >
+    </footer>--> 
 
     <script src="main_assets/js/script.js"></script>
 </body>
