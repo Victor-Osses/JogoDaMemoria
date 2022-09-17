@@ -44,7 +44,11 @@ a {
 }
 
 .flex-wrap {
+<<<<<<< HEAD
     flex-wrap: wrap;
+=======
+    flex-wrap: wrap !important;
+>>>>>>> a9435a4c6f87ca1da07e1865b41bc7765e005bc0
 }
 
 .justify-content-center {
@@ -53,6 +57,14 @@ a {
 
 .justify-content-between {
     justify-content: space-between !important;
+}
+
+.justify-content-around {
+    justify-content: space-around;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
 }
 
 .align-items-center {
