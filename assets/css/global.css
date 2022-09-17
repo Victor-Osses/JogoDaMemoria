@@ -116,3 +116,53 @@ ul {
     padding: 10px 15px !important;
     outline: none;
 }
+
+.itens_menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto 0;
+    width: auto;
+    height: 40px;
+    flex-wrap: wrap;
+   
+    
+
+    
+}
+.itens_list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-weight: bold;
+    margin: 20px;
+    
+}
+  
+  .nav_link {
+    padding: 2px 12px;
+    flex-wrap: wrap;
+  }
+
+  .nav_link1{
+    background-color: #f9a622;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  .nav_link1:hover{
+    background-color:#252525;
+    color:#fff;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.5s;
+    
+  }
+
+  .img_perfil:hover{
+    background-color:#f9a622;
+    width:50%;
+   
+    border-radius: 50%;
+    transition: all 0.8;
+   
+  }
