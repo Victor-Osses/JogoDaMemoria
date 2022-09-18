@@ -66,8 +66,21 @@ body {
   }
 }
 
+.game-mode select {
+  border-style: none;
+  background-color: transparent;
+}
+
 .game-mode #game-mode-text {
-  font-size: 22px !important;
+  font-size: 22px;
+  text-align: center; 
+  font-weight: bold; 
+  text-transform: uppercase;
+}
+
+.game-mode #game-mode-text option {
+  font-size: .7em;
+  color: #31485A;
 }
 
 #game-main #game-score,
@@ -99,17 +112,6 @@ body {
   width: auto;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transition: padding .3s ease-in-out;
-}
-
-#game-main #game-score:hover,
-#game-main #grid-text:hover {
-  padding-right: 1.3em !important;
-  padding-left: 1.3em !important;
-}
-
-#game-main .timer-container:hover {
-  padding-right: 1.8em !important;
-  padding-left: 1.8em !important;
 }
 
 #game-main .timer-container svg {
@@ -228,13 +230,6 @@ body {
   animation: pulse 3s ease-in-out infinite;
   animation-delay: 1.5s;
   border: 2.5px solid #F9A622;
-}
-
-footer {
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 @keyframes pulse {
