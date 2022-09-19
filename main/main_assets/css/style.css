@@ -252,8 +252,6 @@ body {
   }
 }
 
-
-
 #player-history.open {
   transform: translateX(0);
   transition: transform .7s ease;
@@ -269,6 +267,7 @@ body {
   width: 350px;
   position: absolute;
   left: calc(100% - 350px);
+  transition: transform .7s ease;
   top: 0;
 }
 
