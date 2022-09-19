@@ -4,18 +4,6 @@
     box-sizing: border-box;
 }
 
-/* .cabeçalho{
-    display:inline;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: #31485A;
-    color: #fcfcfc;
-    padding-top: 30px;
-    margin-bottom: 20px;
-    align-items: baseline
-} */
-
-
 .botaocadastro {
     display: flex;
     justify-content: center;
