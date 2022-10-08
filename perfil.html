@@ -6,7 +6,7 @@
     <title>Perfil</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/perfil.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             <ul class="itens_list" style="list-style: none">
                 <li>
           <a style="vertical-align: middle" href="perfil.html" class="nav_link">
-            <img class="img_perfil" style="width: 40px; height: 40px" src="img/perfil.png" /></a>
+            <img alt="imagem do usuário" class="img_perfil" style="width: 40px; height: 40px" src="img/perfil.png"></a>
         </li>
         <li><a  href="ranking.html" class="nav_link1">Ranking</a></li>
         <li><a href="login.html" class="nav_link1">Logout</a></li>
@@ -38,14 +38,14 @@
                 </form>
 
                 <form id="user-info-form" class="form d-flex flex-column justify-content-between align-items-center"
-                    action="" method="post">
+                     method="post">
                     <div class="row d-flex">
                         <input id="user" type="text" name="user" placeholder="Nick de Usuário"
                             style="margin-right: 10px;" disabled>
                         <input id="full-name" type="text" name="full-name" placeholder="Nome" disabled>
                     </div>
                     <div class="row d-flex">
-                        <input id="birthday" type="date" name="birthday" placeholder="Data de Nascimento"
+                        <input id="birthday" type="date" name="birthday" 
                             style="margin-right: 10px;" disabled>
                         <input id="cpf" type="text" name="cpf" pattern="\d{3}.\d{3}.\d{3}-\d{1,2}" placeholder="CPF"
                             disabled>
