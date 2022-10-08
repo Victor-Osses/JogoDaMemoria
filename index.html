@@ -25,12 +25,13 @@
                 <h1 class="memory-title">memory</h1>
             </a>
             <ul class="itens_list" style="list-style: none">
-              <li>
-          <a style="vertical-align: middle" href="perfil.html" class="nav_link">
-            <img class="img_perfil" style="width: 40px; height: 40px" src="img/perfil.png" /></a>
-        </li>
-        <li><a  href="ranking.html" class="nav_link1">Ranking</a></li>
-        <li><a href="login.html" class="nav_link1">Logout</a></li>
+                <li>
+                    <a style="vertical-align: middle" href="perfil.html" class="nav_link">
+                        <img class="img_perfil" alt="Imagem de perfil de usuário " style="width: 40px; height: 40px"
+                            src="img/perfil.png"></a>
+                </li>
+                <li><a href="ranking.html" class="nav_link1">Ranking</a></li>
+                <li><a href="login.html" class="nav_link1">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -72,26 +73,26 @@
                 <div class="d-flex">
                     <button id="btn-cheating-mode" class="btn d-flex align-items-center justify-content-between"
                         style="margin-right: 10px;">
-                        <img src="img/hacker.png" alt="" srcset="">
+                        <img src="img/hacker.png" alt="Botão de Trapaça">
                     </button>
 
-                    <button id="btn-pause" class="btn d-flex align-items-center justify-content-between"
-                        style="margin-right: 10px;">
-                        <div class="icon-container d-flex align-items-center">
+                    <div class="icon-container d-flex align-items-center">
+                        <button id="btn-pause" class="btn d-flex align-items-center justify-content-between"
+                            style="margin-right: 10px;">
+
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
                                 <path d="M28.7 37V11h6.9v26Zm-16.3 0V11h6.95v26Z" />
                             </svg>
-                        </div>
-                    </button>
-
-                    <button id="btn-reset" class="btn d-flex align-items-center justify-content-between">
-                        <div class="icon-container d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
-                                <path
-                                    d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" />
-                            </svg>
-                        </div>
-                    </button>
+                        </button>
+                    </div>
+                    <div class="icon-container d-flex align-items-center">
+                        <button id="btn-reset" class="btn d-flex align-items-center justify-content-between">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
+                                    <path
+                                        d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" />
+                                </svg>
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -311,15 +312,14 @@
 
     <div onclick="openSidebar()"
         class="btn btn-historic bg-secondary d-flex justify-content-center align-items-center p-0 position-relative">
-        <img src="img/historico.png" alt="" srcset="">
+        <img src="img/historico.png" alt="Botãod de histórico de partidas">
     </div>
 
-    <sidebar id="player-history" class="bg-secondary">
+    <section id="player-history" class="bg-secondary">
         <div class="sidebar-content">
             <div class="sidebar-header d-flex flex-column align-items-center">
                 <button onclick="closeSidebar()" class="fs-1 w-100 text-end fw-bold mt-1">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
-                        viewBox="0 0 32.000000 32.000000" preserveAspectRatio="xMidYMid meet">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
 
                         <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" stroke="none">
                             <path
@@ -332,7 +332,7 @@
 
             <div class="sidebar-body">
                 <ul id="game-list">
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -344,7 +344,7 @@
                         </div>
                     </li>
 
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-darkBlue">lose</span>
@@ -356,7 +356,7 @@
                         </div>
                     </li>
 
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -368,7 +368,7 @@
                         </div>
                     </li>
 
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-darkBlue">lose</span>
@@ -379,7 +379,7 @@
                             <span>3:28s</span>
                         </div>
                     </li>
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses </h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -391,7 +391,7 @@
                         </div>
                     </li>
 
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-darkBlue">lose</span>
@@ -403,7 +403,7 @@
                         </div>
                     </li>
 
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -415,7 +415,7 @@
                         </div>
                     </li>
 
-                    <li id="game-1" class="card">
+                    <li  class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-darkBlue">lose</span>
@@ -429,12 +429,11 @@
                 </ul>
             </div>
         </div>
-    </sidebar>
+    </section>
 
     <footer class="d-flex justify-content-center" style="margin-top: 20px;">
-      <a href="https://www.frontendmentor.io/challenges/memory-game-vse4WFPvM"
-        target="_blank">Design credits to
-        <span style="text-decoration: underline">Front End Mentor</span></a>
+        <a href="https://www.frontendmentor.io/challenges/memory-game-vse4WFPvM" target="_blank">Design credits to
+            <span style="text-decoration: underline">Front End Mentor</span></a>
     </footer>
 
     <script src="js/script.js"></script>
