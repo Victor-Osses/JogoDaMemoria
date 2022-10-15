@@ -8,6 +8,7 @@
 
     <!-- My Style -->
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/main.css">
 
     <!-- Google Fonts -->
@@ -20,18 +21,18 @@
 
 <body>
     <header id="game-header">
-        <nav class="itens_menu">
+        <nav class="d-flex align-items-center justify-content-between flex-wrap">
             <a href="index.html">
                 <h1 class="memory-title">memory</h1>
             </a>
-            <ul class="itens_list" style="list-style: none">
-                <li>
-                    <a style="vertical-align: middle" href="perfil.html" class="nav_link">
-                        <img class="img_perfil" alt="Imagem de perfil de usuário " style="width: 40px; height: 40px"
+            <ul class="items-list d-flex align-items-center">
+                <li class="menu-item d-flex align-items-center">
+                    <a href="perfil.html">
+                        <img class="img-perfil" alt="Imagem de perfil de usuário"
                             src="img/perfil.png"></a>
                 </li>
-                <li><a href="ranking.html" class="nav_link1">Ranking</a></li>
-                <li><a href="login.html" class="nav_link1">Logout</a></li>
+                <li class="menu-item"><a href="ranking.html" class="bg-primary">Ranking</a></li>
+                <li class="menu-item"><a class="bg-secondary" style="color: #fff;" href="login.html">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -55,7 +56,7 @@
                         <option value="valor2">7x7</option>
                         <option value="valor2">8x8</option>
                     </select>
-                    <div class="timer-container bg-secondary d-flex align-items-center justify-content-between">
+                    <div class="timer-container bg-tertiary d-flex align-items-center justify-content-between">
                         <div class="icon-container time-icon-container d-flex align-items-center"
                             style="margin-right: 4px;">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
@@ -65,7 +66,7 @@
                         </div>
                         <span id="timer-text">00:00</span>
                     </div>
-                    <span id="game-score" class="d-flex align-items-center bg-darkBlue text-white">
+                    <span id="game-score" class="d-flex align-items-center bg-secondary text-white">
                         2 / 32
                     </span>
                 </div>
@@ -87,10 +88,10 @@
                     </div>
                     <div class="icon-container d-flex align-items-center">
                         <button id="btn-reset" class="btn d-flex align-items-center justify-content-between">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
-                                    <path
-                                        d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" />
-                                </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
+                                <path
+                                    d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -99,210 +100,210 @@
             <div class="game-body">
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">1</button>
+                        <button class="btn piece bg-secondary secondary-color">1</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">2</button>
+                        <button class="btn piece bg-secondary secondary-color">2</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-darkBlue secondary-color">3</button>
+                        <button class="btn piece active bg-secondary secondary-color">3</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">4</button>
+                        <button class="btn piece bg-secondary secondary-color">4</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">5</button>
+                        <button class="btn piece bg-secondary secondary-color">5</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">6</button>
+                        <button class="btn piece bg-secondary secondary-color">6</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">7</button>
+                        <button class="btn piece bg-secondary secondary-color">7</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">8</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">9</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">10</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">11</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece inactive bg-darkBlue secondary-color">12</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">13</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">14</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-darkBlue secondary-color">15</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">16</button>
+                        <button class="btn piece bg-secondary secondary-color">8</button>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">17</button>
+                        <button class="btn piece bg-secondary secondary-color">9</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">18</button>
+                        <button class="btn piece bg-secondary secondary-color">10</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">19</button>
+                        <button class="btn piece bg-secondary secondary-color">11</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">20</button>
+                        <button class="btn piece inactive bg-secondary secondary-color">12</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">21</button>
+                        <button class="btn piece bg-secondary secondary-color">13</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">22</button>
+                        <button class="btn piece bg-secondary secondary-color">14</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">23</button>
+                        <button class="btn piece active bg-secondary secondary-color">15</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">24</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">25</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">26</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">27</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">28</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">29</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">30</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">31</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">32</button>
+                        <button class="btn piece bg-secondary secondary-color">16</button>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">1</button>
+                        <button class="btn piece bg-secondary secondary-color">17</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">2</button>
+                        <button class="btn piece bg-secondary secondary-color">18</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-darkBlue secondary-color">3</button>
+                        <button class="btn piece bg-secondary secondary-color">19</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">4</button>
+                        <button class="btn piece bg-secondary secondary-color">20</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">5</button>
+                        <button class="btn piece bg-secondary secondary-color">21</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">6</button>
+                        <button class="btn piece bg-secondary secondary-color">22</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">7</button>
+                        <button class="btn piece bg-secondary secondary-color">23</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">8</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">9</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">10</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">11</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">12</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">13</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">14</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-darkBlue secondary-color">15</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">16</button>
+                        <button class="btn piece bg-secondary secondary-color">24</button>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">17</button>
+                        <button class="btn piece bg-secondary secondary-color">25</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece inactive bg-darkBlue secondary-color">18</button>
+                        <button class="btn piece bg-secondary secondary-color">26</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">19</button>
+                        <button class="btn piece bg-secondary secondary-color">27</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">20</button>
+                        <button class="btn piece bg-secondary secondary-color">28</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">21</button>
+                        <button class="btn piece bg-secondary secondary-color">29</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">22</button>
+                        <button class="btn piece bg-secondary secondary-color">30</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">23</button>
+                        <button class="btn piece bg-secondary secondary-color">31</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">24</button>
+                        <button class="btn piece bg-secondary secondary-color">32</button>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">25</button>
+                        <button class="btn piece bg-secondary secondary-color">1</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">26</button>
+                        <button class="btn piece bg-secondary secondary-color">2</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">27</button>
+                        <button class="btn piece active bg-secondary secondary-color">3</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">28</button>
+                        <button class="btn piece bg-secondary secondary-color">4</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">29</button>
+                        <button class="btn piece bg-secondary secondary-color">5</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">30</button>
+                        <button class="btn piece bg-secondary secondary-color">6</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">31</button>
+                        <button class="btn piece bg-secondary secondary-color">7</button>
                     </div>
                     <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-darkBlue secondary-color">32</button>
+                        <button class="btn piece bg-secondary secondary-color">8</button>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">9</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">10</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">11</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">12</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">13</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">14</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece active bg-secondary secondary-color">15</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">16</button>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">17</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece inactive bg-secondary secondary-color">18</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">19</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">20</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">21</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">22</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">23</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">24</button>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">25</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">26</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">27</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">28</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">29</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">30</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">31</button>
+                    </div>
+                    <div class="piece-container d-flex justify-content-center align-items-center">
+                        <button class="btn piece bg-secondary secondary-color">32</button>
                     </div>
                 </div>
             </div>
@@ -315,7 +316,7 @@
         <img src="img/historico.png" alt="Botãod de histórico de partidas">
     </div>
 
-    <section id="player-history" class="bg-secondary">
+    <section id="player-history" class="bg-tertiary">
         <div class="sidebar-content">
             <div class="sidebar-header d-flex flex-column align-items-center">
                 <button onclick="closeSidebar()" class="fs-1 w-100 text-end fw-bold mt-1">
@@ -332,7 +333,7 @@
 
             <div class="sidebar-body">
                 <ul id="game-list">
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -344,10 +345,10 @@
                         </div>
                     </li>
 
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
-                            <span class="badge game-result bg-darkBlue">lose</span>
+                            <span class="badge game-result bg-secondary">lose</span>
                         </div>
                         <div class="card-body d-flex justify-content-between">
                             <span>8x8</span>
@@ -356,7 +357,7 @@
                         </div>
                     </li>
 
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -368,10 +369,10 @@
                         </div>
                     </li>
 
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
-                            <span class="badge game-result bg-darkBlue">lose</span>
+                            <span class="badge game-result bg-secondary">lose</span>
                         </div>
                         <div class="card-body d-flex justify-content-between">
                             <span>8x8</span>
@@ -379,7 +380,7 @@
                             <span>3:28s</span>
                         </div>
                     </li>
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses </h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -391,10 +392,10 @@
                         </div>
                     </li>
 
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
-                            <span class="badge game-result bg-darkBlue">lose</span>
+                            <span class="badge game-result bg-secondary">lose</span>
                         </div>
                         <div class="card-body d-flex justify-content-between">
                             <span>8x8</span>
@@ -403,7 +404,7 @@
                         </div>
                     </li>
 
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
                             <span class="badge game-result bg-primary">win</span>
@@ -415,10 +416,10 @@
                         </div>
                     </li>
 
-                    <li  class="card">
+                    <li class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h4>Victor Osses</h4>
-                            <span class="badge game-result bg-darkBlue">lose</span>
+                            <span class="badge game-result bg-secondary">lose</span>
                         </div>
                         <div class="card-body d-flex justify-content-between">
                             <span>8x8</span>
@@ -430,11 +431,11 @@
             </div>
         </div>
     </section>
-
+    <!-- 
     <footer class="d-flex justify-content-center" style="margin-top: 20px;">
         <a href="https://www.frontendmentor.io/challenges/memory-game-vse4WFPvM" target="_blank">Design credits to
             <span style="text-decoration: underline">Front End Mentor</span></a>
-    </footer>
+    </footer> -->
 
     <script src="js/script.js"></script>
 </body>

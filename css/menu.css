@@ -1,0 +1,33 @@
+nav {
+    padding: 5px 20px;
+}
+
+.items-list {
+    list-style: none;
+}
+
+.menu-item:not(:last-child) {
+    margin-right: 15px;
+}
+
+.menu-item:not(:nth-child(1)) a {
+    padding: 12px 20px;
+    border-radius: 5px;
+}
+
+.menu-item:nth-child(3) a:hover {
+    background-color: #252525;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.img-perfil {
+    width: 40px; 
+    height: 40px;
+}
+
+a:hover .img-perfil {
+    filter: invert(78%) sepia(50%) saturate(2709%) hue-rotate(342deg) brightness(100%) contrast(96%);
+    transition: filter .4s ease;
+}
