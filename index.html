@@ -43,21 +43,18 @@
         <div class="game-container">
             <div class="game-header d-flex flex-wrap justify-content-between align-items-center">
                 <div class="game-mode d-flex align-items-center">
-                    <select id="game-mode-text" class="primary-color">
-                        <option value="mode1">Classic mode</option>
-                        <option value="mode2">Time mode</option>
+                    <select id="game-mode-select" class="primary-color">
+                        <option value="classic">Classic mode</option>
+                        <option value="timer">Time mode</option>
                     </select>
                 </div>
 
                 <div class="d-flex">
-                    <select style=" border-style: none" id="grid-text" class="bg-primary text-white" name="tamanho">
-                        <option value="valor1" selected>2x2</option>
-                        <option value="valor2">3x3</option>
-                        <option value="valor2">4x4</option>
-                        <option value="valor2">5x5</option>
-                        <option value="valor2">6x6</option>
-                        <option value="valor2">7x7</option>
-                        <option value="valor2">8x8</option>
+                    <select style=" border-style: none" id="game-grid-select" class="bg-primary text-white" name="tamanho">
+                        <option value="2" selected>2x2</option>
+                        <option value="4">4x4</option>
+                        <option value="6">6x6</option>
+                        <option value="8">8x8</option>
                     </select>
                     <div class="timer-container bg-tertiary d-flex align-items-center justify-content-between">
                         <div class="icon-container time-icon-container d-flex align-items-center"
@@ -100,216 +97,7 @@
                 </div>
 
             </div>
-            <div class="game-body" id="tabuleiro">
-                <div class="row d-flex justify-content-center align-items-center" id="linha">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">1</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">2</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-secondary secondary-color">3</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">4</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">5</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">6</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">7</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">8</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">9</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">10</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">11</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece inactive bg-secondary secondary-color">12</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">13</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">14</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-secondary secondary-color">15</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">16</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">17</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">18</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">19</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">20</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">21</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">22</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">23</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">24</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">25</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">26</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">27</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">28</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">29</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">30</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">31</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">32</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">1</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">2</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-secondary secondary-color">3</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">4</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">5</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">6</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">7</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">8</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">9</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">10</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">11</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">12</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">13</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">14</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece active bg-secondary secondary-color">15</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">16</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">17</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece inactive bg-secondary secondary-color">18</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">19</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">20</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">21</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">22</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">23</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">24</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">25</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">26</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">27</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">28</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">29</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">30</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">31</button>
-                    </div>
-                    <div class="piece-container d-flex justify-content-center align-items-center">
-                        <button class="btn piece bg-secondary secondary-color">32</button>
-                    </div>
-                </div>
-            </div>
+            <div class="game-body" id="board"></div>
             <div class="game-footer"></div>
         </div>
     </main>

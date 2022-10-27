@@ -3,89 +3,93 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 function initGame() {
-    //criar objeto do jogo
-    let game = {
-        modoDeJogo: "classico ou por tempo",
-        tamanhoDoTabuleiro: 0,
-        temporizador: 0,
-        placar: 0,
-        pecasDoTabulerio: [],
-        tabuleiro: [],
-        botaoTrapaca: false,
-        botaoPausa: false,
+    const gameMode = document.querySelector("#game-mode-select");
+    const gameGrid = document.querySelector("#game-grid-select");
+    const btnCheating = document.querySelector("#btn-cheating-mode");
+    const btnPause = document.querySelector("#btn-pause");
+    const btnReset = document.querySelector("#btn-reset");
+
+    const game = {
+        gameMode: gameMode.value,
+        gameGrid: gameGrid.value,
+        pairOfPieces: [],
+        timer: 0,
+        score: 0,
     }
 
-    //pegar select de modo de jogo
-    //pegar select de tamanho do tabulheiro
-    //pegar o botão de trapaça, de pausa e de reset
-    //criar evento que "escuta" o modo de jogo, o tamanho do tabuleiro, o botão de trapaça, de pausa e de reset
-    //Depois que tivermos o modo de jogo e o tamanho do tabuleiro - construir tabuleiro
+    gameMode.addEventListener('change', (e) => {
+        game.gameMode = e.target.value;
+    })
+
+    gameGrid.addEventListener('change', (e) => {
+        game.gameGrid = e.target.value;
+        buildBoard(game);
+    })
+ 
+    btnCheating.addEventListener('click', (e) => {
+
+    })
+
+    btnPause.addEventListener('click', (e) => {
+
+    })
+
+    btnReset.addEventListener('click', (e) => {
+
+    })
+
+    buildBoard(game);
 }
 
-function buildBoard(modoDeJogo, tamanhoDoTabuleiro, game) {
-    //Pegar o tabuleiro
-   game.tabuleiro = randomNumbers(game); 
-    //Determinar número de pares de peças = (tamanhoDoTabuleiro * tamanhoDoTabuleiro / 2)
-    //Gerar pares de números aleatórios (dentro do limite do tabuleiro) que não se repetem e inserir aleatoriamente dentro de um vetor de peças
-   
+function buildBoard(game) {
+    if (game.gameMode !== undefined && game.gameGrid !== undefined) {
+        const gameBoard = document.querySelector('#board');
+        getPieces(game);
+        gameBoard.innerHTML = '';
+        let row = '';
+        let counter = 0;
 
-    for(let linhas =0; linhas < tamanhoDoTabuleiro; linhas++ ) {
-        //criar uma linha do tabuleiro
-        for(let colunas =0; colunas < tamanhoDoTabuleiro; colunas++ ) {
-            let numeroAleatorio =  game.tabuleiro[posicaoAleatoriaDoVetor];
-            linha +=  `<div class="piece-container d-flex justify-content-center align-items-center">
-                <button class="btn piece bg-secondary secondary-color" onclick="showPiece()">${numeroAleatorio}</button>
-            </div>`
-        
+        for (let i = 0; i < game.gameGrid; i++) {
+            row += `<div class="row d-flex justify-content-center align-items-center">`;
+            for (let j = 0; j < game.gameGrid; j++) {
+                row += ` 
+                <div class="piece-container d-flex justify-content-center align-items-center">
+                    <button class="btn piece bg-secondary secondary-color">${game.pairOfPieces[counter]}</button>
+                </div>`;
+                counter++;
+            }
+            row += `</div>`;
         }
-        //adicionar linha no tabuleiro 
-        tabuleiro += linha;
+        gameBoard.innerHTML += row;
     }
+
 }
 
-function randomNumbers(game) {
-    //Determinar número de pares de peças = (tamanhoDoTabuleiro * tamanhoDoTabuleiro / 2)
-    //Gerar pares de números aleatórios (dentro do limite do tabuleiro) que não se repetem e inserir aleatoriamente dentro de um vetor de peças
+function getPieces(game) {
+    const gridSize = game.gameGrid;
+    const arr1 = Array.from({ length: gridSize * gridSize / 2 }, (el, index) => (el = index));
+    const arr2 = Array.from({ length: gridSize * gridSize / 2 }, (el, index) => (el = index));
+    game.pairOfPieces = shuffleArray(arr1.concat(arr2));
 }
 
-function showPiece(game) {
-    //exibir a peça do tabuleiro que foi clicada
-    //alterar no objeto de jogo quais peças estão sendo comparadas no momento
-    //se houverem duas peças sendo comporadas, verificar se elas tem o mesmo número verifyNumbers();
-}
+function shuffleArray(arr) {
+    let counter = 0;
+    let pairOfPieces = Array.from({ length: Math.max.apply(null, arr) + 1 });
 
-function verifyNumbers(game) {
-    //pegar o texto das peças e comparar e ver se são iguais
-    //chamar função que altera o estado do jogo - updateGame()
-}
+    pairOfPieces.forEach((v, i, arr) => {
+        arr [i]= new Array();
+    })
 
-function updateTimer(game) {
-    //fazer um loop a cada 1s para incrementar o contador do jogo;
-    //dependendo do modo de jogo, verificar se contador < limite de tempo;
-}
+    console.log(pairOfPieces)
+    
+    for (let i = arr.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        pairOfPieces[arr[i]].push(i); 
+        
+        counter++;
+    }
 
-function updateGame(game) {
-    //atualizar o estado do jogo
-    //pares encontrados mudar de cor
-    //pares não encontrados voltarem ao estado inicial
-    //pares encontrados - incrementar textod de acertos 
-}
-
-function cheat(game) {
-    //Exibir peças do tabuleiro 
-    //parar contador do jogo
-}
-
-function pauseGame(game) {
-    //parar contador
-    //exibir tela de pause
-}
-
-function resetGame(game) {
-    //zerar contador
-    //esconder tabuleiro
-}
-
-function resultGame(game) {
-    //exibir o resultadoDoJogo
+    console.log(pairOfPieces);
+    return arr;
 }

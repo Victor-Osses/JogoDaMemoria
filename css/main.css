@@ -71,20 +71,20 @@ body {
   background-color: transparent;
 }
 
-.game-mode #game-mode-text {
+.game-mode #game-mode-select {
   font-size: 22px;
   text-align: center; 
   font-weight: bold; 
   text-transform: uppercase;
 }
 
-.game-mode #game-mode-text option {
+.game-mode #game-mode-select option {
   font-size: .7em;
   color: #31485A;
 }
 
 #game-main #game-score,
-#game-main #grid-text {
+#game-main #game-grid-select {
   font-size: 18px;
   padding: .7em .75em !important;
   border-radius: 0.375em !important;
@@ -188,6 +188,7 @@ body {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
+#game-main .showPiece,
 #game-main .piece-container .piece:focus:not(.active) {
   background-color: #DFE6EC;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -340,12 +341,12 @@ body {
 }
 
 @media (max-width: 991px) {
-  #game-main .game-mode #game-mode-text {
+  #game-main .game-mode #game-mode-select {
     font-size: 18px !important;
   }
 
   #game-main #game-score,
-  #game-main #grid-text {
+  #game-main #game-grid-select {
     font-size: 16px;
     padding: .5em .55em !important;
   }
@@ -378,12 +379,12 @@ body {
 }
 
 @media (max-width: 767px) {
-  #game-main .game-mode #game-mode-text {
+  #game-main .game-mode #game-mode-select {
     font-size: 16px !important;
   }
 
   #game-main #game-score,
-  #game-main #grid-text {
+  #game-main #game-grid-select {
     font-size: 14px;
     padding: .5em .55em !important;
   }
@@ -431,7 +432,7 @@ body {
   }
 
   #game-main #game-score,
-  #game-main #grid-text {
+  #game-main #game-grid-select {
     font-size: 12px;
   }
 
