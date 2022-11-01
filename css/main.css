@@ -140,10 +140,9 @@ body {
 }
 
 #game-main .icon-container svg{
-  width: 2em;
+  width: 2.2em;
   height: auto;
 }
-
 
 #game-main #btn-reset svg {
   animation: rotate 6s infinite linear;
@@ -170,7 +169,8 @@ body {
 
 #game-main .piece-container .piece {
   padding: 16% 13% !important;
-  width: 55%;
+  width: 90%;
+  height: auto;
   font-size: 24px;
   font-weight: bold;
   border-radius: 9px;
@@ -367,8 +367,9 @@ body {
     padding: 0.25rem 0.4rem !important;
   }
 
+  #game-main button svg,
   #game-main #btn-cheating-mode img {
-    width: 26px;
+    width: 1.5em
   }
 
   #game-main .piece-container .piece {
@@ -394,13 +395,10 @@ body {
     padding: 0.3em .8em !important;
   }
 
-  #game-main .icon-container {
+  #game-main #btn-cheating-mode img,
+  #game-main .icon-container svg {
     width: 1.6em;
     height: auto;
-  }
-
-  #game-main #btn-cheating-mode img {
-    width: 26px;
   }
 
   #game-main .piece-container .piece {

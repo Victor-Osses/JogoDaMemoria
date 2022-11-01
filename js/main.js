@@ -13,6 +13,8 @@ function initGame() {
         gameMode: gameMode.value,
         gameGrid: gameGrid.value,
         pairOfPieces: [],
+        btnCheating: false,
+        btnPause: false,
         timer: 0,
         score: 0,
     }
@@ -62,25 +64,22 @@ function buildBoard(game) {
         }
         gameBoard.innerHTML += row;
     }
-
 }
 
 function getPieces(game) {
     const gridSize = game.gameGrid;
-    const arr1 = Array.from({ length: gridSize * gridSize / 2 }, (el, index) => (el = index));
-    const arr2 = Array.from({ length: gridSize * gridSize / 2 }, (el, index) => (el = index));
+    const arr1 = Array.from({ length: gridSize * gridSize / 2 }, (el, index) => (index));
+    const arr2 = Array.from({ length: gridSize * gridSize / 2 }, (el, index) => (index));
     game.pairOfPieces = shuffleArray(arr1.concat(arr2));
 }
 
 function shuffleArray(arr) {
     let counter = 0;
-    let pairOfPieces = Array.from({ length: Math.max.apply(null, arr) + 1 });
+    let pairOfPieces = Array.from({ length: arr.length / 2 });
 
     pairOfPieces.forEach((v, i, arr) => {
-        arr [i]= new Array();
+        arr[i] = new Array();
     })
-
-    console.log(pairOfPieces)
     
     for (let i = arr.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -90,6 +89,5 @@ function shuffleArray(arr) {
         counter++;
     }
 
-    console.log(pairOfPieces);
     return arr;
 }
