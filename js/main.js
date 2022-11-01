@@ -13,9 +13,14 @@ function initGame() {
         gameMode: gameMode.value,
         gameGrid: gameGrid.value,
         pairOfPieces: [],
-        timer: 0,
+        temporizadorMin: 0,
+        temporizadorSeg: 0,
         score: 0,
     }
+
+    
+    callTimer(game);
+
 
     gameMode.addEventListener('change', (e) => {
         game.gameMode = e.target.value;
@@ -93,3 +98,50 @@ function shuffleArray(arr) {
     console.log(pairOfPieces);
     return arr;
 }
+    
+
+function callTimer(game) {
+    //se o modo de jogo for normal
+    if (game.gameMode == "classic"){
+        setInterval(updateTimer, 1000);
+    }
+    
+    else{
+        setInterval(countdown, 1000);
+    }
+
+    //fazer um loop a cada 1s para incrementar o contador do jogo;
+    //dependendo do modo de jogo, verificar se contador < limite de tempo
+}
+
+function updateTimer(game){
+    console.log(game.temporizadorSeg);
+    game.temporizadorSeg +=1; //game.temporizadorSeg+1;
+    if(game.temporizadorSeg == 60){
+        game.temporizadorMin = game.temporizadorMin+1;
+        game.temporizadorSeg = 0;
+    }
+
+    document.getElementById('timer-text').innerText=game.temporizadorMin+':'+game.temporizadorSeg;
+
+}
+
+function countdown(game){
+if(game.temporizadorSeg != 0){
+game.temporizadorSeg = game.temporizadorSeg-1;
+}
+else if(game.temporizadorSeg == 0){
+    game.temporizadorMin = game.temporizadorMin-1;
+    game.temporizadorSeg = 59;
+
+    if(game.temporizadorMin == 0){
+        alert("Você perdeu");
+    }
+
+}
+
+document.getElementById('timer-text').innerText=game.temporizadorMin+':'+game.temporizadorSeg;
+
+}
+
+
