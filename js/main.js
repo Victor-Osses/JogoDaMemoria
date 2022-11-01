@@ -20,9 +20,7 @@ function initGame() {
         score: 0,
     }
 
-    
     callTimer(game);
-
 
     gameMode.addEventListener('change', (e) => {
         game.gameMode = e.target.value;
@@ -32,13 +30,14 @@ function initGame() {
         game.gameGrid = e.target.value;
         buildBoard(game);
     })
- 
+
     btnCheating.addEventListener('click', (e) => {
 
     })
 
     btnPause.addEventListener('click', (e) => {
-
+        game.btnPause = !game.btnPause;
+        //pausar e despausar contador
     })
 
     btnReset.addEventListener('click', (e) => {
@@ -85,61 +84,69 @@ function shuffleArray(arr) {
     pairOfPieces.forEach((v, i, arr) => {
         arr[i] = new Array();
     })
-    
+
     for (let i = arr.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
-        pairOfPieces[arr[i]].push(i); 
-        
+        pairOfPieces[arr[i]].push(i);
+
         counter++;
     }
 
     return arr;
 }
-    
+
 
 function callTimer(game) {
-    //se o modo de jogo for normal
-    if (game.gameMode == "classic"){
-        setInterval(updateTimer, 1000);
-    }
-    
-    else{
-        setInterval(countdown, 1000);
+    if (game.gameMode == "classic") {
+        setInterval(() => {
+            updateTimer(game);
+        }, 1000);
     }
 
-    //fazer um loop a cada 1s para incrementar o contador do jogo;
-    //dependendo do modo de jogo, verificar se contador < limite de tempo
+    else {
+        setInterval(() => {
+            countdown(game);
+        }, 1000);
+    }
 }
 
-function updateTimer(game){
-    console.log(game.temporizadorSeg);
-    game.temporizadorSeg +=1; //game.temporizadorSeg+1;
-    if(game.temporizadorSeg == 60){
-        game.temporizadorMin = game.temporizadorMin+1;
+function updateTimer(game) {
+    game.temporizadorSeg += 1; 
+
+    if (game.temporizadorSeg == 60) {
+        game.temporizadorMin = game.temporizadorMin + 1;
         game.temporizadorSeg = 0;
     }
 
-    document.getElementById('timer-text').innerText=game.temporizadorMin+':'+game.temporizadorSeg;
+    let seconds = game.temporizadorSeg;
+    let minutes = game.temporizadorMin;
 
-}
+    if(game.temporizadorSeg < 10) {
+        seconds = '0' + game.temporizadorSeg;
+    } 
 
-function countdown(game){
-if(game.temporizadorSeg != 0){
-game.temporizadorSeg = game.temporizadorSeg-1;
-}
-else if(game.temporizadorSeg == 0){
-    game.temporizadorMin = game.temporizadorMin-1;
-    game.temporizadorSeg = 59;
-
-    if(game.temporizadorMin == 0){
-        alert("Você perdeu");
+    if(game.temporizadorMin < 10) {
+        minutes = '0' + game.temporizadorMin;
     }
 
+    document.getElementById('timer-text').innerText = minutes + ':' + seconds
 }
 
-document.getElementById('timer-text').innerText=game.temporizadorMin+':'+game.temporizadorSeg;
+function countdown(game) {
+    if (game.temporizadorSeg != 0) {
+        game.temporizadorSeg = game.temporizadorSeg - 1;
+    }
+    else if (game.temporizadorSeg == 0) {
+        game.temporizadorMin = game.temporizadorMin - 1;
+        game.temporizadorSeg = 59;
 
+        if (game.temporizadorMin == 0) {
+            alert("Você perdeu");
+        }
+    }
+
+    document.getElementById('timer-text').innerText = game.temporizadorMin + ':' + game.temporizadorSeg;
 }
 
 
