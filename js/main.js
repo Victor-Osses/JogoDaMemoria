@@ -60,13 +60,48 @@ function buildBoard(game) {
             for (let j = 0; j < game.gameGrid; j++) {
                 row += ` 
                 <div class="piece-container d-flex justify-content-center align-items-center">
-                    <button class="btn piece bg-secondary secondary-color">${game.pairOfPieces[counter]}</button>
+                    <button onclick="showPiece(this)" class="btn piece bg-secondary secondary-color">${game.pairOfPieces[counter]}</button>
                 </div>`;
                 counter++;
             }
             row += `</div>`;
         }
         gameBoard.innerHTML += row;
+    }
+}
+
+function showPiece(button) {
+    let pieces = document.querySelectorAll(".piece.showPiece");
+    if (pieces.length < 2) {
+        button.classList.add("showPiece");
+        pieces = document.querySelectorAll(".piece.showPiece");
+        if (pieces.length == 2) {
+            comparePieces(pieces);
+        }
+    }
+}
+
+function comparePieces(pieces) {
+    if (pieces[0].innerText == pieces[1].innerText) {
+        pieces[0].classList.add("active");
+        pieces[1].classList.add("active");
+    }
+    setTimeout(() => {
+        pieces[0].classList.remove("showPiece");
+        pieces[1].classList.remove("showPiece");
+    }, 1000);
+
+    setTimeout(()=>{
+        verifyGame();
+    },500);
+}
+
+function verifyGame(){
+    let pieces = document.querySelectorAll(".piece");
+    let activePieces = document.querySelectorAll(".piece.active");
+
+    if(pieces.length == activePieces.length){
+        alert("Você venceu!");
     }
 }
 
@@ -146,7 +181,7 @@ function countdown(game) {
         }
     }
 
-    document.getElementById('timer-text').innerText = game.temporizadorMin + ':' + game.temporizadorSeg;
+    document.getElementById('timer-text').innerText = Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
 }
 
 
