@@ -13,7 +13,7 @@ function initGame() {
         gameMode: gameMode.value,
         gameGrid: gameGrid.value,
         pairOfPieces: [],
-        btnCheating: false,
+        cheatingEnabled: false,
         btnPause: false,
         temporizadorMin: 0,
         temporizadorSeg: 0,
@@ -32,7 +32,7 @@ function initGame() {
     })
 
     btnCheating.addEventListener('click', (e) => {
-
+        toggleCheating(game);
     })
 
     btnPause.addEventListener('click', (e) => {
@@ -184,4 +184,13 @@ function countdown(game) {
     document.getElementById('timer-text').innerText = Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
 }
 
+function toggleCheating(game) {
+    const btn = document.getElementById('btn-cheating-mode');
+    btn.classList.toggle('btn-pressed');
 
+    const pieces = document.querySelectorAll(".piece");
+    for (let piece of pieces) {
+        piece.classList.toggle("showPiece");
+    }
+    game.cheatingEnabled = !game.cheatingEnabled;
+}
