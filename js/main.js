@@ -8,13 +8,14 @@ function initGame() {
     const btnCheating = document.querySelector("#btn-cheating-mode");
     const btnPause = document.querySelector("#btn-pause");
     const btnReset = document.querySelector("#btn-reset");
+    var aux
 
     const game = {
         gameMode: gameMode.value,
         gameGrid: gameGrid.value,
         pairOfPieces: [],
         btnCheating: false,
-        btnPause: false,
+        pause: false,
         temporizadorMin: 0,
         temporizadorSeg: 0,
         score: 0,
@@ -35,10 +36,10 @@ function initGame() {
 
     })
 
-    btnPause.addEventListener('click', (e) => {
-        game.btnPause = !game.btnPause;
-        //pausar e despausar contador
-    })
+    //btnPause.addEventListener('click', (e) => {
+      //  game.btnPause = !game.btnPause
+
+    //})
 
     btnReset.addEventListener('click', (e) => {
 
@@ -99,13 +100,13 @@ function shuffleArray(arr) {
 
 function callTimer(game) {
     if (game.gameMode == "classic") {
-        setInterval(() => {
+        aux = setInterval(() => {
             updateTimer(game);
         }, 1000);
     }
 
     else {
-        setInterval(() => {
+        aux = setInterval(() => {
             countdown(game);
         }, 1000);
     }
@@ -131,9 +132,15 @@ function updateTimer(game) {
     }
 
     document.getElementById('timer-text').innerText = minutes + ':' + seconds
+
+    //créditos a: https://www.youtube.com/watch?v=msyTjg3t4Z8
 }
 
 function countdown(game) {
+
+    let seconds = game.temporizadorSeg;
+    let minutes = game.temporizadorMin
+
     if (game.temporizadorSeg != 0) {
         game.temporizadorSeg = game.temporizadorSeg - 1;
     }
@@ -149,4 +156,28 @@ function countdown(game) {
     document.getElementById('timer-text').innerText = game.temporizadorMin + ':' + game.temporizadorSeg;
 }
 
+function pause(game){
+    clearInterval(aux);
+    tempo = document.getElementById("timer-text");
+    
+
+    pause.disabled = true;
+    if (pause == true){
+        callTimer(game);
+    }
+}
+
+function unpause(game){
+    setInterval(aux);
+}
+   
+   /* if (pause == false){
+        clearInterval(aux);
+        pause = true;
+
+        }
+        else if (pause == true){
+            callTimer(game);
+        }
+    }*/
 
