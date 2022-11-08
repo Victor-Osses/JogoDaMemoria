@@ -138,6 +138,13 @@ body {
   box-shadow: 0px 4px 0px #31485ac7;
   transition: box-shadow 0.5s linear, transform 0.5s linear;
 }
+#game-main #btn-reset:active,
+#game-main #btn-pause:active,
+#game-main #btn-cheating-mode:active {
+  box-shadow: 0px 0px 0px;
+  transform: translateY(4px);
+  opacity: 0.6;
+}
 
 #game-main .icon-container svg{
   width: 2.2em;
@@ -188,8 +195,7 @@ body {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-#game-main .showPiece,
-#game-main .piece-container .piece:focus:not(.active) {
+#game-main .showPiece {
   background-color: #DFE6EC;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
