@@ -138,6 +138,15 @@ body {
   box-shadow: 0px 4px 0px #31485ac7;
   transition: box-shadow 0.5s linear, transform 0.5s linear;
 }
+
+.btn-pressed,
+#game-main #btn-pause.paused {
+  transition: background .25s linear, box-shadow 0.25s linear, transform 0.25s linear !important;
+  box-shadow: none !important; 
+  transform: translateY(4px) !important;
+  background-color: #F9A622 !important;
+}
+
 #game-main #btn-play-reset:active,
 #game-main #btn-pause:active,
 #game-main #btn-cheating-mode:active {
@@ -145,6 +154,11 @@ body {
   transform: translateY(4px);
   opacity: 0.6;
 }
+#game-main #game-mode-select:disabled,
+#game-main #game-grid-select:disabled {
+  cursor: not-allowed;
+}
+
 
 #game-main .icon-container svg{
   width: 2em;
@@ -170,6 +184,8 @@ body {
 }
 
 #game-main .piece-container {
+  -webkit-user-select: none;
+  user-select: none;
   padding: 10px 0px 5px 0px !important;
   width: 100%;
 }

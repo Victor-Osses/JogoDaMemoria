@@ -12,8 +12,6 @@ function initGame() {
     const game = {
         gameMode: gameMode.value,
         gameGrid: gameGrid.value,
-        pairOfPieces: [],
-        cheatingEnabled: false,
         pause: false,
         timer: null,
         temporizadorMin: 0,
@@ -25,20 +23,30 @@ function initGame() {
         if(button.querySelector('svg#btn-play')) {
             gameGrid.disabled = true;
             gameMode.disabled = true;
+            btnPause.disabled = false;
+            btnCheating.disabled = false;
             button.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" fill="#1F3540" id="btn-reset" viewBox="0 0 48 48"><path d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" /></svg>`;
             callTimer(game);
-            buildBoard(game);
-
+            const pieces = document.querySelectorAll(".piece");
+            for (let piece of pieces) {
+                piece.disabled = false;
+            }
         } else if(button.querySelector('svg#btn-reset')) {
-            button.onclick = () => {
-                resetGame(game);
-            };
-            button.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" id="btn-play" fill="#1F3540" viewBox="0 0 512.000000 512.000000" >
+            resetGame(game);
+            gameGrid.disabled = false;
+            gameMode.disabled = false;
+            btnPause.disabled = true;
+            btnCheating.disabled = true;
+            button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" id="btn-play" fill="#1F3540" viewBox="0 0 512.000000 512.000000" >
                 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                 <path d="M620 5110 c-71 -15 -151 -60 -206 -115 -86 -85 -137 -210 -154 -375 -13 -129 -13 -3991 0 -4120 17 -165 68 -290 154 -375 149 -149 373 -163 619 -39 76 37 3457 1975 3546 2031 31 20 90 70 131 112 159 161 196 340 107 521 -37 76 -152 198 -238 253 -89 56 -3470 1994 -3546 2031 -37 19 -97 44 -133 56 -74 24 -214 34 -280 20z"/>
                 </g>
             </svg>`
+            const pieces = document.querySelectorAll(".piece");
+            for (let piece of pieces) {
+                piece.disabled = true;
+            }
         }
     })
     
@@ -57,14 +65,36 @@ function initGame() {
     })
 
     btnPause.addEventListener('click', (e) => {
-        game.pause = !game.pause;
-        let x = document.querySelectorAll(".piece");
-        for (let a of x){
-            a.disabled = game.pause;
-        }
+        pauseGame(game);
     })
 
     btnPlayReset.addEventListener('click', (e) => {})
+}
+
+function pauseGame(game) {
+    game.pause = !game.pause;
+
+    if(!game.pause) {
+        unpause(game);
+    }
+    else {
+        let pieces = document.querySelectorAll(".piece");
+        for (let piece of pieces){
+            piece.disabled = true;
+        }
+        document.querySelector("#btn-pause").classList.add("paused");
+    }
+}
+
+function unpause(game) {
+    game.pause = false;
+    let pieces = document.querySelectorAll(".piece");
+
+    for (let piece of pieces){
+        piece.disabled = false;
+    }
+
+    document.querySelector("#btn-pause").classList.remove("paused");
 }
 
 function setGameScore(game) {
@@ -86,7 +116,7 @@ function buildBoard(game) {
             for (let j = 0; j < game.gameGrid; j++) {
                 row += ` 
                 <div class="piece-container d-flex justify-content-center align-items-center">
-                    <button onclick="showPiece(this)" class="btn piece bg-secondary secondary-color">${game.pairOfPieces[counter]}</button>
+                    <button disabled onclick="showPiece(this)" class="btn piece bg-secondary secondary-color">${game.pairOfPieces[counter]}</button>
                 </div>`;
                 counter++;
             }
@@ -135,6 +165,7 @@ function verifyGame(){
 
     if(pieces.length == activePieces.length){
         alert("Você venceu!");
+        resetGame();
     }
 }
 
@@ -174,15 +205,14 @@ async function callTimer(game) {
         setTimer(game);
         game.timer = setInterval(() => {
             countdown(game);
-        }, 1000);
+        }, 100);
     }
 }
 
 function setTimer(game) {
-    const gameGrid = ''+game.gameGrid;
+    const gameGrid = '' + game.gameGrid;
     switch(gameGrid) {
         case "2": {
-            console.log(game.temporizadorMin);
             game.temporizadorMin = 1;
             break;
         }
@@ -239,11 +269,14 @@ function countdown(game) {
             game.temporizadorSeg = game.temporizadorSeg - 1;
         }
         else if (game.temporizadorSeg === 0) {
-            game.temporizadorMin = game.temporizadorMin - 1;
-            game.temporizadorSeg = 59;
-
             if (game.temporizadorMin === 0) {
                 alert("Você perdeu");
+                resetGame(game);
+                return;
+            }
+            else {
+                game.temporizadorMin = game.temporizadorMin - 1;
+                game.temporizadorSeg = 59;
             }
         }
 
@@ -254,10 +287,11 @@ function countdown(game) {
 function resetGame(game) {
     game.temporizadorMin = 0;
     game.temporizadorSeg = 0;
-    console.log(game.timer);
     clearInterval(game.timer);
-    console.log(game.timer);
+    document.querySelector("#btn-cheating-mode").classList.remove('btn-pressed');
+    document.querySelector("#btn-pause").classList.remove('paused');
     document.getElementById('timer-text').innerText = '00:00';
+    unpause(game);
     buildBoard(game);
 }
 
@@ -267,7 +301,13 @@ function toggleCheating(game){
     
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
-        piece.classList.toggle("showPiece");
+        if(!piece.classList.contains("showPiece")) {
+            piece.classList.add("showPiece");
+        } else {
+            if(!btn.classList.contains("btn-pressed")) {
+                piece.classList.remove("showPiece");
+            }
+        }
     }
 
     game.cheatingEnabled = !game.cheatingEnabled;
