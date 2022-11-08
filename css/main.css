@@ -159,13 +159,13 @@ body {
   cursor: not-allowed;
 }
 
-
-#game-main .icon-container svg{
+#game-main .icon-container img,
+#game-main .icon-container svg {
   width: 2em;
   height: auto;
 }
 
-#game-main #btn-play-reset svg.reset-icon {
+#game-main #btn-play-reset .reset-icon {
   animation: rotate 6s infinite linear;
 }
 
@@ -372,7 +372,8 @@ body {
     font-size: 16px;
     padding: .5em .55em !important;
   }
-
+  
+  #game-main .icon-container img,
   #game-main .icon-container svg{
     width: 1.5em;
     height: auto;
@@ -390,6 +391,7 @@ body {
   }
 
   #game-main button svg,
+  #game-main .icon-container img,
   #game-main #btn-cheating-mode img {
     width: 1.5em
   }
@@ -418,6 +420,7 @@ body {
   }
 
   #game-main #btn-cheating-mode img,
+  #game-main .icon-container img,
   #game-main .icon-container svg {
     width: 1.6em;
     height: auto;

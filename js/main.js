@@ -2,6 +2,8 @@ window.addEventListener('DOMContentLoaded', () => {
     initGame();
 })
 
+let globalGame;
+
 function initGame() {
     const gameMode = document.querySelector("#game-mode-select");
     const gameGrid = document.querySelector("#game-grid-select");
@@ -17,65 +19,58 @@ function initGame() {
         temporizadorMin: 0,
         temporizadorSeg: 0,
     }
+
+    globalGame = game; // Gambiarrazinha pra resolver um problema na linha 163 .-.
     
-    document.querySelector('#btn-play-reset').addEventListener('click', (e) => {
-        const button = e.target;
-        if(button.querySelector('svg#btn-play')) {
+    btnPlayReset.addEventListener('click', () => {
+        if(btnPlayReset.querySelector('img#btn-play')) {
+            playGame(game);
             gameGrid.disabled = true;
             gameMode.disabled = true;
             btnPause.disabled = false;
             btnCheating.disabled = false;
-            button.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" fill="#1F3540" id="btn-reset" viewBox="0 0 48 48"><path d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" /></svg>`;
-            callTimer(game);
-            const pieces = document.querySelectorAll(".piece");
-            for (let piece of pieces) {
-                piece.disabled = false;
-            }
-        } else if(button.querySelector('svg#btn-reset')) {
+        } else {
             resetGame(game);
             gameGrid.disabled = false;
             gameMode.disabled = false;
             btnPause.disabled = true;
             btnCheating.disabled = true;
-            button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" id="btn-play" fill="#1F3540" viewBox="0 0 512.000000 512.000000" >
-                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                <path d="M620 5110 c-71 -15 -151 -60 -206 -115 -86 -85 -137 -210 -154 -375 -13 -129 -13 -3991 0 -4120 17 -165 68 -290 154 -375 149 -149 373 -163 619 -39 76 37 3457 1975 3546 2031 31 20 90 70 131 112 159 161 196 340 107 521 -37 76 -152 198 -238 253 -89 56 -3470 1994 -3546 2031 -37 19 -97 44 -133 56 -74 24 -214 34 -280 20z"/>
-                </g>
-            </svg>`
-            const pieces = document.querySelectorAll(".piece");
-            for (let piece of pieces) {
-                piece.disabled = true;
-            }
         }
     })
     
-    setGameScore(game);
+    setGameGridAndScore(game);
 
     gameMode.addEventListener('change', (e) => {
         game.gameMode = e.target.value;
     })
 
-    gameGrid.addEventListener('change', (e) => {
-        setGameScore(game);
+    gameGrid.addEventListener('change', () => {
+        setGameGridAndScore(game);
     })
 
-    btnCheating.addEventListener('click', (e) => {
+    btnCheating.addEventListener('click', () => {
         toggleCheating(game);
     })
 
-    btnPause.addEventListener('click', (e) => {
+    btnPause.addEventListener('click', () => {
         pauseGame(game);
     })
+}
 
-    btnPlayReset.addEventListener('click', (e) => {})
+function playGame(game) {
+    callTimer(game);
+    document.querySelector("#btn-play-reset").innerHTML = `<img src="/img/reset.svg" id="btn-reset">`;
+    const pieces = document.querySelectorAll(".piece");
+    for (let piece of pieces) {
+        piece.disabled = false;
+    } 
 }
 
 function pauseGame(game) {
     game.pause = !game.pause;
 
     if(!game.pause) {
-        unpause(game);
+        unpauseGame(game);
     }
     else {
         let pieces = document.querySelectorAll(".piece");
@@ -86,7 +81,7 @@ function pauseGame(game) {
     }
 }
 
-function unpause(game) {
+function unpauseGame(game) {
     game.pause = false;
     let pieces = document.querySelectorAll(".piece");
 
@@ -97,7 +92,7 @@ function unpause(game) {
     document.querySelector("#btn-pause").classList.remove("paused");
 }
 
-function setGameScore(game) {
+function setGameGridAndScore(game) {
     game.gameGrid = document.querySelector("#game-grid-select").value;
     document.querySelector("#game-score").innerHTML = "0 / " + game.gameGrid * game.gameGrid / 2;
     buildBoard(game);
@@ -165,7 +160,7 @@ function verifyGame(){
 
     if(pieces.length == activePieces.length){
         alert("Você venceu!");
-        resetGame();
+        resetGame(globalGame);
     }
 }
 
@@ -177,7 +172,6 @@ function getPieces(game) {
 }
 
 function shuffleArray(arr) {
-    let counter = 0;
     let pairOfPieces = Array.from({ length: arr.length / 2 });
 
     pairOfPieces.forEach((v, i, arr) => {
@@ -188,8 +182,6 @@ function shuffleArray(arr) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
         pairOfPieces[arr[i]].push(i);
-
-        counter++;
     }
 
     return arr;
@@ -205,7 +197,7 @@ async function callTimer(game) {
         setTimer(game);
         game.timer = setInterval(() => {
             countdown(game);
-        }, 100);
+        }, 1000);
     }
 }
 
@@ -285,14 +277,24 @@ function countdown(game) {
 }
 
 function resetGame(game) {
+    clearInterval(game.timer);
     game.temporizadorMin = 0;
     game.temporizadorSeg = 0;
-    clearInterval(game.timer);
     document.querySelector("#btn-cheating-mode").classList.remove('btn-pressed');
+    document.querySelector("#btn-cheating-mode").disabled = true;
     document.querySelector("#btn-pause").classList.remove('paused');
     document.getElementById('timer-text').innerText = '00:00';
-    unpause(game);
+    document.querySelector("#btn-play-reset").innerHTML = `<img src="/img/play.svg" id="btn-play">` 
+    document.querySelector("#game-mode-select").disabled = false;
+    document.querySelector("#game-grid-select").disabled = false;
+    document.querySelector("#btn-pause").disabled = true;
+    const pieces = document.querySelectorAll(".piece");
+    for (let piece of pieces) {
+        piece.disabled = true;
+    } 
+    unpauseGame(game);
     buildBoard(game);
+    setGameGridAndScore(game);
 }
 
 function toggleCheating(game){

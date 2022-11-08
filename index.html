@@ -51,10 +51,10 @@
 
                 <div class="d-flex">
                     <select style=" border-style: none" id="game-grid-select" class="bg-primary text-white" name="tamanho">
-                        <option value="2" selected>2x2</option>
+                        <option value="2">2x2</option>
                         <option value="4">4x4</option>
                         <option value="6">6x6</option>
-                        <option value="8">8x8</option>
+                        <option value="8" selected>8x8</option>
                     </select>
                     <div class="timer-container bg-tertiary d-flex align-items-center justify-content-between">
                         <div class="icon-container time-icon-container d-flex align-items-center"
@@ -73,13 +73,9 @@
 
                 <div class="d-flex">
                     <div class="icon-container d-flex align-items-center" style="margin-right: 10px;">
+                        <img src="/img/reset.svg" style="display: none;">
                         <button id="btn-play-reset" class="btn d-flex align-items-center justify-content-between">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="btn-play" fill="#1F3540" viewBox="0 0 512.000000 512.000000" >
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                                <path d="M620 5110 c-71 -15 -151 -60 -206 -115 -86 -85 -137 -210 -154 -375 -13 -129 -13 -3991 0 -4120 17 -165 68 -290 154 -375 149 -149 373 -163 619 -39 76 37 3457 1975 3546 2031 31 20 90 70 131 112 159 161 196 340 107 521 -37 76 -152 198 -238 253 -89 56 -3470 1994 -3546 2031 -37 19 -97 44 -133 56 -74 24 -214 34 -280 20z"/>
-                                </g>
-                            </svg>
-        
+                            <img src="/img/play.svg" id="btn-play">
                         </button>
                     </div>
 
