@@ -2,7 +2,6 @@ window.addEventListener('DOMContentLoaded', () => {
     initGame();
 })
 
-
 function initGame() {
     const gameMode = document.querySelector("#game-mode-select");
     const gameGrid = document.querySelector("#game-grid-select");
@@ -15,16 +14,19 @@ function initGame() {
         gameGrid: gameGrid.value,
         pairOfPieces: [],
         cheatingEnabled: false,
-        btnPause: false,
+        pause: false,
         temporizadorMin: 0,
         temporizadorSeg: 0,
     }
     
     document.querySelector('#btn-play-reset').addEventListener('click', (e) => {
         const button = e.target;
-        console
         if(button.querySelector('svg#btn-play')) {
             callTimer(game);
+            gameGrid.disabled = true;
+            gameMode.disabled = true;
+            button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" fill="#1F3540" viewBox="0 0 48 48"><pathd="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" /></svg>`;
+
         } else {
             console.log("test");
         }
@@ -45,7 +47,7 @@ function initGame() {
     })
 
     btnPause.addEventListener('click', (e) => {
-     
+        game.pause = !game.pause;
     })
 
     btnPlayReset.addEventListener('click', (e) => {
@@ -158,10 +160,9 @@ function callTimer(game) {
             updateTimer(game);
         }, 1000);
     }
-
     else {
         setTimer(game);
-        setInterval(() => {
+        aux = setInterval(() => {
             countdown(game);
         }, 1000);
     }
@@ -175,48 +176,65 @@ function setTimer(game) {
             break;
         }
         case "4": {
-            game.temporizadorMin = 3;
+            game.temporizadorMin = 4;
             break;
+        }
+        case "6": {
+            game.temporizadorMin = 6;
+            break;
+        }
+        case "8": {
+            game.temporizadorMin = 8;
+            break;
+        }
+        default: {
+            alert("Você está tentando burlar o jogo!")
         }
     }
 }
 
 function updateTimer(game) {
-    game.temporizadorSeg += 1; 
+    if(!game.pause) {
+        game.temporizadorSeg += 1; 
 
-    if (game.temporizadorSeg == 60) {
-        game.temporizadorMin = game.temporizadorMin + 1;
-        game.temporizadorSeg = 0;
+        if (game.temporizadorSeg == 60) {
+            game.temporizadorMin = game.temporizadorMin + 1;
+            game.temporizadorSeg = 0;
+        }
+
+        let seconds = game.temporizadorSeg;
+        let minutes = game.temporizadorMin;
+
+        if(game.temporizadorSeg < 10) {
+            seconds = '0' + game.temporizadorSeg;
+        } 
+
+        if(game.temporizadorMin < 10) {
+            minutes = '0' + game.temporizadorMin;
+        }
+
+        document.getElementById('timer-text').innerText = minutes + ':' + seconds
     }
 
-    let seconds = game.temporizadorSeg;
-    let minutes = game.temporizadorMin;
-
-    if(game.temporizadorSeg < 10) {
-        seconds = '0' + game.temporizadorSeg;
-    } 
-
-    if(game.temporizadorMin < 10) {
-        minutes = '0' + game.temporizadorMin;
-    }
-
-    document.getElementById('timer-text').innerText = minutes + ':' + seconds
+    //créditos a: https://www.youtube.com/watch?v=msyTjg3t4Z8
 }
 
 function countdown(game) {
-    if (game.temporizadorSeg != 0) {
-        game.temporizadorSeg = game.temporizadorSeg - 1;
-    }
-    else if (game.temporizadorSeg == 0) {
-        game.temporizadorMin = game.temporizadorMin - 1;
-        game.temporizadorSeg = 59;
-
-        if (game.temporizadorMin == 0) {
-            alert("Você perdeu");
+    if(!game.pause){
+        if (game.temporizadorSeg != 0) {
+            game.temporizadorSeg = game.temporizadorSeg - 1;
         }
-    }
+        else if (game.temporizadorSeg == 0) {
+            game.temporizadorMin = game.temporizadorMin - 1;
+            game.temporizadorSeg = 59;
 
-    document.getElementById('timer-text').innerText = Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
+            if (game.temporizadorMin == 0) {
+                alert("Você perdeu");
+            }
+        }
+
+        document.getElementById('timer-text').innerText = Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
+    }
 }
 
 function resetGame(game) {
@@ -225,10 +243,15 @@ function resetGame(game) {
     buildBoard(game);
 }
 
-function toggleCheating(game) {
+
+function unpause(game){
+    clearInterval(aux);
+}
+
+function toggleCheating(game){
     const btn = document.getElementById('btn-cheating-mode');
     btn.classList.toggle('btn-pressed');
-
+    
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
         piece.classList.toggle("showPiece");
