@@ -58,6 +58,10 @@ function initGame() {
 
     btnPause.addEventListener('click', (e) => {
         game.pause = !game.pause;
+        let x = document.querySelectorAll(".piece");
+        for (let a of x){
+            a.disabled = game.pause;
+        }
     })
 
     btnPlayReset.addEventListener('click', (e) => {})
