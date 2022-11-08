@@ -15,6 +15,7 @@ function initGame() {
         pairOfPieces: [],
         cheatingEnabled: false,
         pause: false,
+        timer: null,
         temporizadorMin: 0,
         temporizadorSeg: 0,
     }
@@ -22,13 +23,22 @@ function initGame() {
     document.querySelector('#btn-play-reset').addEventListener('click', (e) => {
         const button = e.target;
         if(button.querySelector('svg#btn-play')) {
-            callTimer(game);
             gameGrid.disabled = true;
             gameMode.disabled = true;
-            button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" fill="#1F3540" viewBox="0 0 48 48"><pathd="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" /></svg>`;
+            button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="reset-icon" fill="#1F3540" id="btn-reset" viewBox="0 0 48 48"><path d="M24 45.5q-4 0-7.525-1.5-3.525-1.5-6.15-4.125Q7.7 37.25 6.2 33.75T4.7 26.2h4.7q0 6.1 4.25 10.325T24 40.75q6.05 0 10.3-4.25 4.25-4.25 4.25-10.3 0-6.1-4.125-10.325T24.2 11.65h-1.15L26.4 15l-2.5 2.5-8.3-8.35 8.3-8.3 2.5 2.5-3.6 3.55h1.15q4.05 0 7.575 1.5 3.525 1.5 6.15 4.125Q40.3 15.15 41.8 18.65t1.5 7.55q0 4-1.5 7.525-1.5 3.525-4.125 6.15Q35.05 42.5 31.55 44T24 45.5Z" /></svg>`;
+            callTimer(game);
+            buildBoard(game);
 
-        } else {
-            console.log("test");
+        } else if(button.querySelector('svg#btn-reset')) {
+            button.onclick = () => {
+                resetGame(game);
+            };
+            button.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" id="btn-play" fill="#1F3540" viewBox="0 0 512.000000 512.000000" >
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M620 5110 c-71 -15 -151 -60 -206 -115 -86 -85 -137 -210 -154 -375 -13 -129 -13 -3991 0 -4120 17 -165 68 -290 154 -375 149 -149 373 -163 619 -39 76 37 3457 1975 3546 2031 31 20 90 70 131 112 159 161 196 340 107 521 -37 76 -152 198 -238 253 -89 56 -3470 1994 -3546 2031 -37 19 -97 44 -133 56 -74 24 -214 34 -280 20z"/>
+                </g>
+            </svg>`
         }
     })
     
@@ -50,11 +60,7 @@ function initGame() {
         game.pause = !game.pause;
     })
 
-    btnPlayReset.addEventListener('click', (e) => {
-        resetGame(game);
-    })
-
-    buildBoard(game);
+    btnPlayReset.addEventListener('click', (e) => {})
 }
 
 function setGameScore(game) {
@@ -154,15 +160,15 @@ function shuffleArray(arr) {
     return arr;
 }
 
-function callTimer(game) {
+async function callTimer(game) {
     if (game.gameMode == "classic") {
-        setInterval(() => {
+        game.timer = setInterval(() => {
             updateTimer(game);
         }, 1000);
     }
     else {
         setTimer(game);
-        aux = setInterval(() => {
+        game.timer = setInterval(() => {
             countdown(game);
         }, 1000);
     }
@@ -172,6 +178,7 @@ function setTimer(game) {
     const gameGrid = ''+game.gameGrid;
     switch(gameGrid) {
         case "2": {
+            console.log(game.temporizadorMin);
             game.temporizadorMin = 1;
             break;
         }
@@ -188,9 +195,12 @@ function setTimer(game) {
             break;
         }
         default: {
-            alert("Você está tentando burlar o jogo!")
+            alert("Você está tentando burlar o jogo!");
+            break;
         }
     }
+    
+    document.getElementById('timer-text').innerText = "0" + game.temporizadorMin + ':00';
 }
 
 function updateTimer(game) {
@@ -221,31 +231,30 @@ function updateTimer(game) {
 
 function countdown(game) {
     if(!game.pause){
-        if (game.temporizadorSeg != 0) {
+        if (game.temporizadorSeg !== 0) {
             game.temporizadorSeg = game.temporizadorSeg - 1;
         }
-        else if (game.temporizadorSeg == 0) {
+        else if (game.temporizadorSeg === 0) {
             game.temporizadorMin = game.temporizadorMin - 1;
             game.temporizadorSeg = 59;
 
-            if (game.temporizadorMin == 0) {
+            if (game.temporizadorMin === 0) {
                 alert("Você perdeu");
             }
         }
 
-        document.getElementById('timer-text').innerText = Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
+        document.getElementById('timer-text').innerText = "0" + Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
     }
 }
 
 function resetGame(game) {
     game.temporizadorMin = 0;
     game.temporizadorSeg = 0;
+    console.log(game.timer);
+    clearInterval(game.timer);
+    console.log(game.timer);
+    document.getElementById('timer-text').innerText = '00:00';
     buildBoard(game);
-}
-
-
-function unpause(game){
-    clearInterval(aux);
 }
 
 function toggleCheating(game){
