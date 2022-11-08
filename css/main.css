@@ -128,7 +128,7 @@ body {
   }
 }
 
-#game-main #btn-reset,
+#game-main #btn-play-reset,
 #game-main #btn-pause,
 #game-main #btn-cheating-mode {
   width: auto;
@@ -138,7 +138,7 @@ body {
   box-shadow: 0px 4px 0px #31485ac7;
   transition: box-shadow 0.5s linear, transform 0.5s linear;
 }
-#game-main #btn-reset:active,
+#game-main #btn-play-reset:active,
 #game-main #btn-pause:active,
 #game-main #btn-cheating-mode:active {
   box-shadow: 0px 0px 0px;
@@ -147,11 +147,11 @@ body {
 }
 
 #game-main .icon-container svg{
-  width: 2.2em;
+  width: 2em;
   height: auto;
 }
 
-#game-main #btn-reset svg {
+#game-main #btn-play-reset svg.reset-icon {
   animation: rotate 6s infinite linear;
 }
 
@@ -367,7 +367,7 @@ body {
     padding: 0.3em .8em !important;
   }
 
-  #game-main #btn-reset,
+  #game-main #btn-play-reset,
   #game-main #btn-pause,
   #game-main #btn-cheating-mode {
     padding: 0.25rem 0.4rem !important;
@@ -444,7 +444,7 @@ body {
     font-size: 12px;
   }
 
-  #game-main #btn-reset,
+  #game-main #btn-play-reset,
   #game-main #btn-pause,
   #game-main #btn-cheating-mode {
     padding: 0.15rem 0.25rem !important;

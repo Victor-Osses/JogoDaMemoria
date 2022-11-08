@@ -2,12 +2,13 @@ window.addEventListener('DOMContentLoaded', () => {
     initGame();
 })
 
+
 function initGame() {
     const gameMode = document.querySelector("#game-mode-select");
     const gameGrid = document.querySelector("#game-grid-select");
     const btnCheating = document.querySelector("#btn-cheating-mode");
     const btnPause = document.querySelector("#btn-pause");
-    const btnReset = document.querySelector("#btn-reset");
+    const btnPlayReset = document.querySelector("#btn-play-reset");
 
     const game = {
         gameMode: gameMode.value,
@@ -17,18 +18,26 @@ function initGame() {
         btnPause: false,
         temporizadorMin: 0,
         temporizadorSeg: 0,
-        score: 0,
     }
-
-    callTimer(game);
+    
+    document.querySelector('#btn-play-reset').addEventListener('click', (e) => {
+        const button = e.target;
+        console
+        if(button.querySelector('svg#btn-play')) {
+            callTimer(game);
+        } else {
+            console.log("test");
+        }
+    })
+    
+    setGameScore(game);
 
     gameMode.addEventListener('change', (e) => {
         game.gameMode = e.target.value;
     })
 
     gameGrid.addEventListener('change', (e) => {
-        game.gameGrid = e.target.value;
-        buildBoard(game);
+        setGameScore(game);
     })
 
     btnCheating.addEventListener('click', (e) => {
@@ -36,14 +45,19 @@ function initGame() {
     })
 
     btnPause.addEventListener('click', (e) => {
-        game.btnPause = !game.btnPause;
-        //pausar e despausar contador
+     
     })
 
-    btnReset.addEventListener('click', (e) => {
-
+    btnPlayReset.addEventListener('click', (e) => {
+        resetGame(game);
     })
 
+    buildBoard(game);
+}
+
+function setGameScore(game) {
+    game.gameGrid = document.querySelector("#game-grid-select").value;
+    document.querySelector("#game-score").innerHTML = "0 / " + game.gameGrid * game.gameGrid / 2;
     buildBoard(game);
 }
 
@@ -85,6 +99,7 @@ function comparePieces(pieces) {
     if (pieces[0].innerText == pieces[1].innerText) {
         pieces[0].classList.add("active");
         pieces[1].classList.add("active");
+        updateScore();
     }
     setTimeout(() => {
         pieces[0].classList.remove("showPiece");
@@ -93,7 +108,13 @@ function comparePieces(pieces) {
 
     setTimeout(()=>{
         verifyGame();
-    },500);
+    },200);
+}
+
+function updateScore() {
+    const score = document.querySelector("#game-score");
+    const scoreValue = (score.innerHTML).split("/");
+    score.innerHTML = parseInt(scoreValue[0]) + 1 + " /" + scoreValue[1];
 }
 
 function verifyGame(){
@@ -131,7 +152,6 @@ function shuffleArray(arr) {
     return arr;
 }
 
-
 function callTimer(game) {
     if (game.gameMode == "classic") {
         setInterval(() => {
@@ -140,9 +160,24 @@ function callTimer(game) {
     }
 
     else {
+        setTimer(game);
         setInterval(() => {
             countdown(game);
         }, 1000);
+    }
+}
+
+function setTimer(game) {
+    const gameGrid = ''+game.gameGrid;
+    switch(gameGrid) {
+        case "2": {
+            game.temporizadorMin = 1;
+            break;
+        }
+        case "4": {
+            game.temporizadorMin = 3;
+            break;
+        }
     }
 }
 
@@ -184,6 +219,12 @@ function countdown(game) {
     document.getElementById('timer-text').innerText = Math.abs(game.temporizadorMin) + ':' + game.temporizadorSeg;
 }
 
+function resetGame(game) {
+    game.temporizadorMin = 0;
+    game.temporizadorSeg = 0;
+    buildBoard(game);
+}
+
 function toggleCheating(game) {
     const btn = document.getElementById('btn-cheating-mode');
     btn.classList.toggle('btn-pressed');
@@ -192,5 +233,6 @@ function toggleCheating(game) {
     for (let piece of pieces) {
         piece.classList.toggle("showPiece");
     }
+
     game.cheatingEnabled = !game.cheatingEnabled;
 }
