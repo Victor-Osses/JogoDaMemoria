@@ -206,11 +206,17 @@ body {
   color: #fff;
 }
 
+#game-main .piece-container .piece.active2 {
+  background-color: var(--secondary-color);
+  color: #fff;
+} 
+
 #game-main .piece-container .piece.inactive {
   background-color: #DFE6EC;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
+#game-main .showPiece2,
 #game-main .showPiece {
   background-color: #DFE6EC;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -372,7 +378,7 @@ body {
     font-size: 16px;
     padding: .5em .55em !important;
   }
-  
+
   #game-main .icon-container img,
   #game-main .icon-container svg{
     width: 1.5em;

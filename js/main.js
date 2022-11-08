@@ -125,6 +125,7 @@ function showPiece(button) {
     let pieces = document.querySelectorAll(".piece.showPiece");
     if (pieces.length < 2) {
         button.classList.add("showPiece");
+        if(button.classList.contains("showPiece2")) button.classList.add("active2"); 
         pieces = document.querySelectorAll(".piece.showPiece");
         if (pieces.length == 2) {
             comparePieces(pieces);
@@ -144,6 +145,8 @@ function comparePieces(pieces) {
     }, 1000);
 
     setTimeout(()=>{
+        pieces[0].classList.remove("active2");
+        pieces[1].classList.remove("active2");
         verifyGame();
     },200);
 }
@@ -303,14 +306,12 @@ function toggleCheating(game){
     
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
-        if(!piece.classList.contains("showPiece")) {
-            piece.classList.add("showPiece");
+        if(!piece.classList.contains("showPiece2")) {
+            piece.classList.add("showPiece2");
         } else {
             if(!btn.classList.contains("btn-pressed")) {
-                piece.classList.remove("showPiece");
+                piece.classList.remove("showPiece2");
             }
         }
     }
-
-    game.cheatingEnabled = !game.cheatingEnabled;
 }
