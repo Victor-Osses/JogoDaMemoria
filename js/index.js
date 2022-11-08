@@ -59,7 +59,7 @@ function initGame() {
 
 function playGame(game) {
     callTimer(game);
-    document.querySelector("#btn-play-reset").innerHTML = `<img src="/img/reset.svg" class="reset-icon" id="btn-reset">`;
+    document.querySelector("#btn-play-reset").innerHTML = `<img src="img/reset.svg" class="reset-icon" id="btn-reset">`;
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
         piece.disabled = false;
@@ -287,7 +287,7 @@ function resetGame(game) {
     document.querySelector("#btn-cheating-mode").disabled = true;
     document.querySelector("#btn-pause").classList.remove('paused');
     document.getElementById('timer-text').innerText = '00:00';
-    document.querySelector("#btn-play-reset").innerHTML = `<img src="/img/play.svg" id="btn-play">` 
+    document.querySelector("#btn-play-reset").innerHTML = `<img src="img/play.svg" id="btn-play">`
     document.querySelector("#game-mode-select").disabled = false;
     document.querySelector("#game-grid-select").disabled = false;
     document.querySelector("#btn-pause").disabled = true;
