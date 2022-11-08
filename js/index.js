@@ -59,7 +59,7 @@ function initGame() {
 
 function playGame(game) {
     callTimer(game);
-    document.querySelector("#btn-play-reset").innerHTML = `<img src="/img/reset.svg" id="btn-reset">`;
+    document.querySelector("#btn-play-reset").innerHTML = `<img src="/img/reset.svg" class="reset-icon" id="btn-reset">`;
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
         piece.disabled = false;
