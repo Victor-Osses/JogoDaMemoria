@@ -53,7 +53,7 @@
         <button type="submit" class="btn bg-primary" name="cadastrarUsuario">Cadastrar</button>
 
         <div class="botaovoltar">
-            <a href="login.html">Já está cadastrado? Faça login!</a>
+            <a href="login.php">Já está cadastrado? Faça login!</a>
         </div>
     </form>
 </body>

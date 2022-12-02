@@ -28,7 +28,7 @@
             <button type="submit" name="loginUsuario" class="btn bg-primary">Atualizar senha</button>
         </div>
         <div class="d-flex flex-column" style="text-align: center;">
-            <a href="login.html">
+            <a href="login.php">
                 <p>Voltar a tela de login</p>
             </a>
         </div>
