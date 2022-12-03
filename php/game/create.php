@@ -18,7 +18,7 @@ try {
     $result = $DB['conn']->query($sql);
 } catch (\Exception $e) {
     $out['success'] = false;
-    $out['data']['errorMsg'] = $e->getMessage();
+    $out['errorMsg'] = $e->getMessage();
 }
 
 echo json_encode($out);
