@@ -15,11 +15,12 @@ create table usuario (
 create table game (
     gameId int not null auto_increment,
     userId int not null,
-    gameStatus smallint not null default 0,
-    gameResult smallint,
-    gameGrid smallint not null,
-    gameMode smallint not null,
-    gameTime int not null,
+    gameResult binary not null,
+    gameGrid tinyint not null,
+    gameMode binary not null,
+    gameDuration int not null,
+    gameScore tinyint not null,
+    createTime date not null,
     primary key (gameId),
     foreign key (userId) references usuario(userId) on delete cascade
 );

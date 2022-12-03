@@ -2,7 +2,6 @@
 
 $CFG = array();
 $DB = array();
-
 $CFG['hostMysql'] = 'localhost';
 $CFG['userMysql'] = 'root';
 $CFG['passMysql'] = '';

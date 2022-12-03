@@ -2,7 +2,16 @@ window.addEventListener('DOMContentLoaded', () => {
     initGame();
 })
 
-let globalGame;
+const game = {
+    gameMode: null,
+    gameGrid: null,
+    pause: false,
+    timer: null,
+    initialTime: 0,
+    temporizadorMin: 0,
+    temporizadorSeg: 0,
+    result: 0
+}
 
 function initGame() {
     const gameMode = document.querySelector("#game-mode-select");
@@ -10,20 +19,12 @@ function initGame() {
     const btnCheating = document.querySelector("#btn-cheating-mode");
     const btnPause = document.querySelector("#btn-pause");
     const btnPlayReset = document.querySelector("#btn-play-reset");
-
-    const game = {
-        gameMode: gameMode.value,
-        gameGrid: gameGrid.value,
-        pause: false,
-        timer: null,
-        temporizadorMin: 0,
-        temporizadorSeg: 0,
-    }
-
-    globalGame = game; // Gambiarrazinha pra resolver um problema na linha 163 .-.
     
+    game.gameMode = gameMode.value;
+    game.gameGrid = gameGrid.value;
+
     btnPlayReset.addEventListener('click', () => {
-        if(btnPlayReset.querySelector('img#btn-play')) {
+        if (btnPlayReset.querySelector('img#btn-play')) {
             playGame(game);
             gameGrid.disabled = true;
             gameMode.disabled = true;
@@ -57,7 +58,7 @@ function initGame() {
     })
 }
 
-function playGame(game) {
+function playGame() {
     callTimer(game);
     document.querySelector("#btn-play-reset").innerHTML = `<img src="img/reset.svg" class="reset-icon" id="btn-reset">`;
     const pieces = document.querySelectorAll(".piece");
@@ -66,7 +67,7 @@ function playGame(game) {
     } 
 }
 
-function pauseGame(game) {
+function pauseGame() {
     game.pause = !game.pause;
 
     if(!game.pause) {
@@ -81,7 +82,7 @@ function pauseGame(game) {
     }
 }
 
-function unpauseGame(game) {
+function unpauseGame() {
     game.pause = false;
     let pieces = document.querySelectorAll(".piece");
 
@@ -92,13 +93,13 @@ function unpauseGame(game) {
     document.querySelector("#btn-pause").classList.remove("paused");
 }
 
-function setGameGridAndScore(game) {
+function setGameGridAndScore() {
     game.gameGrid = document.querySelector("#game-grid-select").value;
     document.querySelector("#game-score").innerHTML = "0 / " + game.gameGrid * game.gameGrid / 2;
     buildBoard(game);
 }
 
-function buildBoard(game) {
+function buildBoard() {
     if (game.gameMode !== undefined && game.gameGrid !== undefined) {
         const gameBoard = document.querySelector('#board');
         getPieces(game);
@@ -122,10 +123,12 @@ function buildBoard(game) {
 }
 
 function showPiece(button) {
-    let pieces = document.querySelectorAll(".piece.showPiece");
-    if (pieces.length < 2) {
+    pieces = document.querySelectorAll(".piece.showPiece");
+    if(pieces.length < 2) {
         button.classList.add("showPiece");
-        if(button.classList.contains("showPiece2")) button.classList.add("active2"); 
+        if(button.classList.contains("showPiece2")) {
+            button.classList.add("active2")
+        }; 
         pieces = document.querySelectorAll(".piece.showPiece");
         if (pieces.length == 2) {
             comparePieces(pieces);
@@ -148,13 +151,13 @@ function comparePieces(pieces) {
         pieces[0].classList.remove("active2");
         pieces[1].classList.remove("active2");
         verifyGame();
-    },200);
+    }, 200);
 }
 
 function updateScore() {
     const score = document.querySelector("#game-score");
     const scoreValue = (score.innerHTML).split("/");
-    score.innerHTML = parseInt(scoreValue[0]) + 1 + " /" + scoreValue[1];
+    score.textContent = parseInt(scoreValue[0]) + 1 + " /" + scoreValue[1];
 }
 
 function verifyGame(){
@@ -163,7 +166,8 @@ function verifyGame(){
 
     if(pieces.length == activePieces.length){
         alert("Você venceu!");
-        resetGame(globalGame);
+        game.result = 1;
+        registerGame(game);
     }
 }
 
@@ -186,25 +190,24 @@ function shuffleArray(arr) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 
-    console.log(arr);
     return arr;
 }
 
-async function callTimer(game) {
+async function callTimer() {
     if (game.gameMode == "classic") {
         game.timer = setInterval(() => {
-            updateTimer(game);
+            classicTimer(game);
         }, 1000);
     }
     else {
-        setTimer(game);
+        setTimer();
         game.timer = setInterval(() => {
-            countdown(game);
-        }, 1000);
+            countdownTimer();
+        }, 100);
     }
 }
 
-function setTimer(game) {
+function setTimer() {
     const gameGrid = '' + game.gameGrid;
     switch(gameGrid) {
         case "2": {
@@ -224,15 +227,16 @@ function setTimer(game) {
             break;
         }
         default: {
-            alert("Você está tentando burlar o jogo!");
+            alert("Você está tentando burlar o jogo! Resetando o jogo...");
+            resetGame(game);
             break;
         }
     }
-    
+    game.initialTime = game.temporizadorMin * 60;
     document.getElementById('timer-text').innerText = "0" + game.temporizadorMin + ':00';
 }
 
-function updateTimer(game) {
+function classicTimer() {
     if(!game.pause) {
         game.temporizadorSeg += 1; 
 
@@ -258,7 +262,7 @@ function updateTimer(game) {
     //créditos a: https://www.youtube.com/watch?v=msyTjg3t4Z8
 }
 
-function countdown(game) {
+function countdownTimer() {
     if(!game.pause){
         if (game.temporizadorSeg !== 0) {
             game.temporizadorSeg = game.temporizadorSeg - 1;
@@ -266,7 +270,7 @@ function countdown(game) {
         else if (game.temporizadorSeg === 0) {
             if (game.temporizadorMin === 0) {
                 alert("Você perdeu");
-                resetGame(game);
+                registerGame(game);
                 return;
             }
             else {
@@ -279,10 +283,12 @@ function countdown(game) {
     }
 }
 
-function resetGame(game) {
+function resetGame() {
     clearInterval(game.timer);
     game.temporizadorMin = 0;
     game.temporizadorSeg = 0;
+    game.initialTime = 0;
+    game.result = 0;
     document.querySelector("#btn-cheating-mode").classList.remove('btn-pressed');
     document.querySelector("#btn-cheating-mode").disabled = true;
     document.querySelector("#btn-pause").classList.remove('paused');
@@ -295,12 +301,12 @@ function resetGame(game) {
     for (let piece of pieces) {
         piece.disabled = true;
     } 
-    unpauseGame(game);
-    buildBoard(game);
-    setGameGridAndScore(game);
+    unpauseGame();
+    buildBoard();
+    setGameGridAndScore();
 }
 
-function toggleCheating(game){
+function toggleCheating(){
     const btn = document.getElementById('btn-cheating-mode');
     btn.classList.toggle('btn-pressed');
     
@@ -315,3 +321,32 @@ function toggleCheating(game){
         }
     }
 }
+
+function registerGame() {
+    let data = JSON.stringify({
+        gameGrid: game.gameGrid,
+        gameMode: game.gameMode === "classic" ? 0 : 1,
+        gameDuration: Math.abs(game.initialTime - (game.temporizadorMin * 60 + game.temporizadorSeg)),
+        gameScore: document.querySelector("#game-score").innerHTML.split("/")[0],
+        gameResult: game.result
+    });
+
+    newGame = fetch('php/game/create.php', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: data
+    }).then((data) => data.json())
+    .then((response) => {
+        if(!response['success']) {
+            alert('Ops, tivemos o seguinte erro: ' + response['errorMsg']);
+            return;
+        }
+        console.log(response);
+        return response['data'];
+    })
+
+    resetGame();
+}
+
