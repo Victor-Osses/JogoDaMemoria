@@ -1,3 +1,13 @@
+<?php
+/*session_start();
+require_once('verificacao.php');
+verificacao('login.php');
+*/
+include('verificandoLogin.php');
+include('conexao.php');
+include('verificacao;php')
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
