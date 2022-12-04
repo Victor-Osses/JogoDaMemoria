@@ -1,3 +1,24 @@
+<?php
+//créditos a https://www.youtube.com/watch?v=QOeDE7nPDq0&list=PLSHNk_yA5fNjoIRNHV-3FprsN3NWPcnnK&index=3
+if(isset($_POST['submit'])){
+    
+    include_once('settings.php');
+
+    $nomeUsuario = $_POST['userName'];
+    $nomeReal= $_POST['userRealname'];
+    $nascimento = $_POST['userBirth'];
+    $cpf = $_POST['userCpf'];
+    $telefone = $_POST['userPhone'];
+    $email = $_POST['userEmail'];
+    $senha = $_POST['userPassword'];
+
+    $sql = mysqli_query($conexao, "INSERT INTO usuario(userName, userRealname, userBirth, userCpf, userPhone, userEmail, userPassword) 
+    VALUES('$nomeUsuario', '$nomeReal', '$nascimento', '$cpf', '$telefone', '$email', '$senha')");
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,33 +45,33 @@
         <h4 style="text-align: center;">Preencha o formulário abaixo com suas informações pessoais.</h4>
     </div>
 
-    <form action="#" method="GET" class="form d-flex flex-column justify-content-center align-items-center">
+    <form action="cadastro.php" method="POST" class="form d-flex flex-column justify-content-center align-items-center">
         <label for="username"></label>
-        <input type="text" style="margin-right: 10px;" name="username" id="username" placeholder="Nome do usuário"
+        <input type="text" style="margin-right: 10px;" name="userName" id="username" placeholder="Nome do usuário"
             required>
 
         <label for="realname"></label>
-        <input type="text" placeholder="Nome" id="realname" name="name" required>
+        <input type="text" placeholder="Nome" id="realname" name="userRealname" required>
 
         <label for="birth"></label>
-        <input type="date" id="birth" name="birth" required>
+        <input type="date" id="birth" name="userBirth" required>
 
         <label for="cpf"></label>
-        <input type="text" placeholder="CPF" id="cpf" name="cpf" required>
+        <input type="text" placeholder="CPF" id="cpf" name="userCpf" required>
 
         <label for="phone"></label>
-        <input type="tel" placeholder="Telefone" id="phone" name="telefone" required>
+        <input type="tel" placeholder="Telefone" id="phone" name="userPhone" required>
 
         <label for="email"></label>
-        <input type="email" placeholder="E-mail" id="email" name="email" required>
+        <input type="email" placeholder="E-mail" id="email" name="userEmail" required>
 
         <label for="password"></label>
-        <input type="password" placeholder="Senha" id="password" name="password" required>
+        <input type="password" placeholder="Senha" id="password" name="userPassword" required>
 
         <label for="passwordconfirmation"></label>
-        <input type="password" placeholder="Confirmar Senha" id="passwordconfirmation" name="password" required>
+        <input type="password" placeholder="Confirmar Senha" id="passwordconfirmation" name="password2" required>
 
-        <button type="submit" class="btn bg-primary" name="cadastrarUsuario">Cadastrar</button>
+        <input type="submit" class="btn bg-primary" name="submit">
 
         <div class="botaovoltar">
             <a href="login.php">Já está cadastrado? Faça login!</a>
@@ -67,3 +88,16 @@
 -->
 
 </html>
+
+<script type="text/javascript">
+
+function verificarSenha() {
+  let senha = document.getElementById("userPassword").value;
+  let confirmacaosenha = document.getElementById("password2").value;
+
+  if (senha != confirmacaosenha) {
+    alert("As senhas não são iguais");
+  }
+  
+}
+    </script>
