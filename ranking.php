@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" >
 
+  <script src="js/ranking-ajax.js"></script>
+
   <title>Memory Game</title>
 </head>
 
@@ -39,7 +41,7 @@
     <section style="text-align: center; margin-top: 50px;">
       <h2 class="nav_link1">RANKING</h2>
       <BR>
-      <img alt="Imagem do ranking" style="width: 500px;" src="img/ranking.png">
+      <table id="ranking"></table>
     </section>
 
 </body>

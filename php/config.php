@@ -2,10 +2,10 @@
 
 $CFG = array();
 $DB = array();
-$CFG['hostMysql'] = 'localhost';
+$CFG['hostMysql'] = '127.0.0.1';
 $CFG['userMysql'] = 'root';
 $CFG['passMysql'] = '';
-$CFG['db'] = 'memorygame';
+$CFG['db'] = 'memoryGame';
 
 //Define o fusorário, todas as funções de data e hora vão estar com o fusorário ajustado
 date_default_timezone_set('America/Sao_Paulo');
