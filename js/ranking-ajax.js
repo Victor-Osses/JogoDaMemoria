@@ -20,7 +20,18 @@ async function createRanking() {
         tr.appendChild(td);
         for (let field of ['userNickName', 'gameGrid', 'gameDuration', 'gameScore']) {
                 const td = document.createElement('td');
-                td.innerText = data[field];
+                if(field === 'gameDuration') {
+                    let minutes = `${Math.floor(parseInt(data[field]) / 60)}`;
+                    minutes = minutes.padStart(2, '0');
+
+                    let seconds = `${parseInt(data[field]) - (minutes * 60)}`;
+                    seconds = seconds.padStart(2, '0');
+
+                    td.innerText = minutes + ':' + seconds + 's';
+                } else {
+                    td.innerText = data[field];
+                }
+            
                 tr.appendChild(td);
         }
         ranking.appendChild(tr);

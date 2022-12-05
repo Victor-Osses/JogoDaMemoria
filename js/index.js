@@ -200,7 +200,7 @@ async function callTimer() {
     if (game.gameMode == "classic") {
         game.timer = setInterval(() => {
             classicTimer(game);
-        }, 1000);
+        }, 10);
     }
     else {
         setTimer();
