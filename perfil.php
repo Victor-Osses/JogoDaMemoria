@@ -15,6 +15,7 @@ if (!isset($_SESSION['userId'])) {
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="js/perfil-ajax.js"></script>
 </head>
 
 <body>

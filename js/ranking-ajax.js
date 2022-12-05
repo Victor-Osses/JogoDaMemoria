@@ -31,11 +31,12 @@ async function getRankingData() {
         },
         'body': JSON.stringify({ gameMode: 'classic' })
     })
-        .then((data) => data.json())
-        .then((res) => {
-            if (!res['success']) {
-                alert('Falha ao acessar ranking: ' + res['errorMsg']);
-            }
-            return res['data'];
-        });
+    .then((data) => data.json())
+    .then((res) => {
+        if (!res['success']) {
+            alert('Falha ao acessar ranking: ' + res['errorMsg']);
+            return;
+        }
+        return res['data'];
+    });
 }
