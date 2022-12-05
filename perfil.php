@@ -7,7 +7,6 @@ if (!isset($_SESSION['userId'])) {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <title>Perfil</title>
@@ -21,7 +20,7 @@ if (!isset($_SESSION['userId'])) {
 <body>
     <header id="game-header">
         <?php
-        require_once("includes/menu.php");
+            require_once("includes/menu.php");
         ?>
     </header>
 
@@ -66,7 +65,6 @@ if (!isset($_SESSION['userId'])) {
         <div class="d-flex flex-column justify-content-between align-items-center">
             <button id="update-btn" class="btn bg-primary" type="submit" form="user-info-form"
                 disabled>Atualizar</button>
-            <!-- <a id="return" href="index.html">Voltar</a> -->
         </div>
     </section>
 

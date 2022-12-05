@@ -67,9 +67,9 @@ if (!isset($_SESSION['userId'])) {
 
                 <div class="d-flex">
                     <div class="icon-container d-flex align-items-center" style="margin-right: 10px;">
-                        <img src="img/reset.svg" style="display: none;">
+                        <img src="img/reset.svg" alt="" style="display: none;">
                         <button id="btn-play-reset" class="btn d-flex align-items-center justify-content-between">
-                            <img src="img/play.svg" id="btn-play">
+                            <img src="img/play.svg" alt="" id="btn-play">
                         </button>
                     </div>
 

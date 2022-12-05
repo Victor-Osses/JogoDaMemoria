@@ -30,16 +30,15 @@ if (!isset($_SESSION['userId'])) {
 <body>
     <header id="game-header">
         <?php
-        require_once("includes/menu.php");
+          require_once("includes/menu.php");
         ?>
     </header>
 
     <section style="text-align: center; margin-top: 50px;">
       <h2 class="nav_link1">RANKING</h2>
-      <BR>
+      <br>
       <table id="ranking"></table>
     </section>
-
 </body>
 
 </html>
