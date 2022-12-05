@@ -11,7 +11,8 @@ const game = {
     initialTime: 0,
     temporizadorMin: 0,
     temporizadorSeg: 0,
-    result: 0
+    result: 0,
+    score: 0
 }
 
 function initGame() {
@@ -20,7 +21,7 @@ function initGame() {
     const btnCheating = document.querySelector("#btn-cheating-mode");
     const btnPause = document.querySelector("#btn-pause");
     const btnPlayReset = document.querySelector("#btn-play-reset");
-    
+
     game.gameMode = gameMode.value;
     game.gameGrid = gameGrid.value;
 
@@ -39,7 +40,7 @@ function initGame() {
             btnCheating.disabled = true;
         }
     })
-    
+
     setGameGridAndScore(game);
 
     gameMode.addEventListener('change', (e) => {
@@ -65,7 +66,7 @@ function playGame() {
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
         piece.disabled = false;
-    } 
+    }
 }
 
 function pauseGame() {
@@ -111,7 +112,7 @@ function buildBoard() {
         for (let i = 0; i < game.gameGrid; i++) {
             row += `<div class="row d-flex justify-content-center align-items-center">`;
             for (let j = 0; j < game.gameGrid; j++) {
-                row += ` 
+                row += `
                 <div class="piece-container d-flex justify-content-center align-items-center">
                     <button disabled onclick="showPiece(this)" class="btn piece bg-secondary secondary-color">${game.pairOfPieces[counter]}</button>
                 </div>`;
@@ -129,9 +130,10 @@ function showPiece(button) {
         button.classList.add("showPiece");
         if(button.classList.contains("showPiece2")) {
             button.classList.add("active2")
-        }; 
+        };
         pieces = document.querySelectorAll(".piece.showPiece");
         if (pieces.length == 2) {
+            game.score += 1;
             comparePieces(pieces);
         }
     }
@@ -239,7 +241,7 @@ function setTimer() {
 
 function classicTimer() {
     if(!game.pause) {
-        game.temporizadorSeg += 1; 
+        game.temporizadorSeg += 1;
 
         if (game.temporizadorSeg == 60) {
             game.temporizadorMin = game.temporizadorMin + 1;
@@ -251,7 +253,7 @@ function classicTimer() {
 
         if(game.temporizadorSeg < 10) {
             seconds = '0' + game.temporizadorSeg;
-        } 
+        }
 
         if(game.temporizadorMin < 10) {
             minutes = '0' + game.temporizadorMin;
@@ -290,6 +292,7 @@ function resetGame() {
     game.temporizadorSeg = 0;
     game.initialTime = 0;
     game.result = 0;
+    game.score = 0;
     document.querySelector("#btn-cheating-mode").classList.remove('btn-pressed');
     document.querySelector("#btn-cheating-mode").disabled = true;
     document.querySelector("#btn-pause").classList.remove('paused');
@@ -301,7 +304,7 @@ function resetGame() {
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
         piece.disabled = true;
-    } 
+    }
     unpauseGame();
     buildBoard();
     setGameGridAndScore();
@@ -310,7 +313,7 @@ function resetGame() {
 function toggleCheating(){
     const btn = document.getElementById('btn-cheating-mode');
     btn.classList.toggle('btn-pressed');
-    
+
     const pieces = document.querySelectorAll(".piece");
     for (let piece of pieces) {
         if(!piece.classList.contains("showPiece2")) {
