@@ -7,7 +7,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $out = array("success" => false);
 
     $email = sanitize($_POST['email']);
-    $password = sanitize($_POST['password']);
+    $password = hash("sha256", sanitize($_POST['password']) . "memorygame");
 
     try {
         $sql = "SELECT userId, userNickName, userName FROM usuario WHERE userEmail = '$email' AND userPassword = '$password'";

@@ -28,6 +28,7 @@ require_once("php/user/get.php");
 
     <section style="width: 80vw; margin: auto;">
         <h2>Dados pessoais</h2>
+        <h3 id="msg-container" style="text-align: center;"></h3>
         <div class="user-info d-flex justify-content-center align-items-center">
             <img class="profile-img" src="img/profile.png" alt="">
 

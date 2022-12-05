@@ -45,9 +45,10 @@ async function updateUser() {
     .then((data) => data.json())
     .then((res) => {
         if (!res['success']) {
-            alert('Falha ao atualizar perfil: ' + res['errorMsg']);
+            document.getElementById('msg-container').innerHTML = res ['errorMsg'];
             return;
+        } else {
+            document.getElementById('msg-container').innerHTML = "Atualização concluiída com sucesso!";
         }
-        console.log(res);
     });
 }

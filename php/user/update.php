@@ -12,7 +12,7 @@ function processInput()
     }
     unset($value);
 
-    //$in->password = hash("sha256", $in->password);
+    $in->password = hash("sha256", $in->password . "memorygame");
     return $in;
 }
 
@@ -20,18 +20,26 @@ $INPUT = processInput();
 
 $USERID = $_SESSION['userId'];
 
-$out = array("success" => true);
+$out = array("success" => false);
 
 try {
     $n = $INPUT->{'full-name'};
-    $sql = "UPDATE usuario
-            SET userEmail = '{$INPUT->email}', userCpf = '{$INPUT->cpf}', userPassword = '{$INPUT->password}',
-                userName = '{$INPUT->{'full-name'}}', userBirthday = '{$INPUT->birthday}', userPhone = '{$INPUT->phone}'
-            WHERE userId = '$USERID'";
-    $DB["conn"]->query($sql);
+    $sql = "SELECT userId from usuario WHERE userNickName = '{$INPUT->{'user'}}'";
+    $result = $DB["conn"]->query($sql);
+    if(mysqli_num_rows($result) == 0) {
+        $sql = "UPDATE usuario
+        SET userEmail = '{$INPUT->email}', userCpf = '{$INPUT->cpf}', userPassword = '{$INPUT->password}',
+            userName = '{$INPUT->{'full-name'}}', userNickName = '{$INPUT->{'user'}}', userBirthday = '{$INPUT->birthday}', userPhone = '{$INPUT->phone}'
+        WHERE userId = '$USERID'";
+        $DB["conn"]->query($sql);
+        $out["success"] = true;
+    } else {
+        $out["success"] = false;
+        $out["errorMsg"] = "Nickname indisponível!";
+    }
 } catch (\Exception $e) {
     $out["success"] = false;
-    $out["errorMsg"] = $e->getMessage();
+    $out["errorMsg"] = "Erro desconhecido: " . $e->getMessage();
 }
 
 echo json_encode($out);

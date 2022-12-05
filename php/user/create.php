@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $cpf = (int)$_POST['userCpf']; 
     $telefone =(int)$_POST['userPhone'];
     $email = sanitize($_POST['userEmail']);
-    $senha = sanitize($_POST['userPassword']);
+    $senha = hash("sha256",  sanitize($_POST['userPassword']) . "memorygame");
     $out = array("success" => false);
 
     try {
