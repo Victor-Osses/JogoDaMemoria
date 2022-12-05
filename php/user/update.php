@@ -25,9 +25,9 @@ $out = array("success" => true);
 try {
     $n = $INPUT->{'full-name'};
     $sql = "UPDATE usuario
-            SET userEmail = '{$INPUT->email}', userCpf = {$INPUT->cpf}, userPassword = '{$INPUT->password}',
-                userName = '{$INPUT->{'full-name'}}', userBirthday = {$INPUT->birthday}, userPhone = {$INPUT->phone}
-            WHERE userId = $USERID;";
+            SET userEmail = '{$INPUT->email}', userCpf = '{$INPUT->cpf}', userPassword = '{$INPUT->password}',
+                userName = '{$INPUT->{'full-name'}}', userBirthday = '{$INPUT->birthday}', userPhone = '{$INPUT->phone}'
+            WHERE userId = '$USERID'";
     $DB["conn"]->query($sql);
 } catch (\Exception $e) {
     $out["success"] = false;

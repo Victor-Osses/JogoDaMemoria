@@ -23,7 +23,7 @@ async function updateUser() {
     const form = document.getElementById('user-info-form');
     const data = {};
 
-    if (form.elements['password'].value !== form.elements['passoword-repeat'].value) {
+    if (form.elements['password'].value !== form.elements['password-repeat'].value) {
         alert("Senha e confirmação de senha não são iguais!");
         return;
     }
@@ -32,7 +32,8 @@ async function updateUser() {
         data[field] = form.elements[field].value;
     }
     
-    await fetch('/php/user/update.php', {
+    console.log(data)
+    await fetch('php/user/update.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

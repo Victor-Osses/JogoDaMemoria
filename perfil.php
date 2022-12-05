@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['userId'])) {
     header("Location: login.php");
 }
+
+require_once("php/user/get.php");
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +51,8 @@ if (!isset($_SESSION['userId'])) {
                             disabled>
                     </div>
                     <div class="row d-flex">
-                        <input id="phone" type="tel" name="phone" pattern="(\d{2,3}) ?9?\d{4}-?\d{4}"
+                    <!-- pattern="(\d{2,3}) ?9?\d{4}-?\d{4}"-->
+                        <input id="phone" type="tel" name="phone" 
                             placeholder="Telefone" style="margin-right: 10px;" disabled>
                         <input id="email" type="email" name="email" placeholder="Email" disabled>
                     </div>
@@ -67,5 +70,17 @@ if (!isset($_SESSION['userId'])) {
                 disabled>Atualizar</button>
         </div>
     </section>
-
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const userData = <?php echo json_encode($out['userData']); ?>;
+            document.getElementsByName("user")[0].value = userData['userNickName'];
+            document.getElementsByName("full-name")[0].value = userData['userName'];
+            document.getElementsByName("birthday")[0].value = userData['userBirthday'];
+            document.getElementsByName("cpf")[0].value = userData['userCpf'];
+            document.getElementsByName("phone")[0].value = userData['userPhone'];
+            document.getElementsByName("email")[0].value = userData['userEmail'];
+            document.getElementsByName("password")[0].value = userData['userPassword'];
+        })
+    </script>
+</body>
 </html>
