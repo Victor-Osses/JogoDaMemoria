@@ -5,7 +5,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('user-info-form');
     form.addEventListener('submit', async (ev) => {
         ev.preventDefault();
+
         await updateUser();
+
+        editToggle.checked = false;
+        toggleFormEnabling();
     })
 });
 
@@ -42,7 +46,7 @@ async function updateUser() {
     .then((data) => data.json())
     .then((res) => {
         if (!res['success']) {
-            alert('Falha ao atualizar perfil: ', res['errorMsg']);
+            alert('Falha ao atualizar perfil: ' + res['errorMsg']);
             return;
         }
     });
