@@ -3,7 +3,7 @@ async function registerGame() {
         gameGrid: game.gameGrid,
         gameMode: game.gameMode === "classic" ? 0 : 1,
         gameDuration: Math.abs(game.initialTime - (game.temporizadorMin * 60 + game.temporizadorSeg)),
-        gameScore: document.querySelector("#game-score").innerHTML.split("/")[0],
+        gameScore: game.score,
         gameResult: game.result
     });
 
