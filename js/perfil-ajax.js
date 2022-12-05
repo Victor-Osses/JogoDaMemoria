@@ -5,7 +5,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('user-info-form');
     form.addEventListener('submit', async (ev) => {
         ev.preventDefault();
+
         await updateUser();
+
+        editToggle.checked = false;
+        toggleFormEnabling();
     })
 });
 
@@ -31,7 +35,6 @@ async function updateUser() {
     for (let field of ['user', 'full-name', 'birthday', 'cpf', 'phone', 'email', 'password']) {
         data[field] = form.elements[field].value;
     }
-    
     await fetch('php/user/update.php', {
         method: 'POST',
         headers: {
@@ -42,7 +45,7 @@ async function updateUser() {
     .then((data) => data.json())
     .then((res) => {
         if (!res['success']) {
-            alert('Falha ao atualizar perfil: ', res['errorMsg']);
+            alert('Falha ao atualizar perfil: ' + res['errorMsg']);
             return;
         }
         console.log(res);
