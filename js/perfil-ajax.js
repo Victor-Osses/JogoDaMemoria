@@ -31,14 +31,13 @@ async function updateUser() {
     for (let field of ['user', 'full-name', 'birthday', 'cpf', 'phone', 'email', 'password']) {
         data[field] = form.elements[field].value;
     }
-    
-    console.log(data)
+
     await fetch('php/user/update.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: data
+        body: JSON.stringify(data)
     })
     .then((data) => data.json())
     .then((res) => {
