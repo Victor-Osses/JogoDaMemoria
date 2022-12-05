@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
     const editToggle = document.getElementById('toggle-edit');
-    editToggle.addEventListener('change', toggleEnabledForm);
+    editToggle.addEventListener('change', toggleFormEnabling);
 
     const form = document.getElementById('user-info-form');
     form.addEventListener('submit', async (ev) => {
@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 });
 
-function toggleEnabledForm() {
+function toggleFormEnabling() {
     const formFields = document.querySelectorAll('#user-info-form input');
     for (let field of formFields) {
         field.disabled = !field.disabled;
