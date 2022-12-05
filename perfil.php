@@ -47,7 +47,8 @@ require_once("php/user/get.php");
                     <div class="row d-flex">
                         <input id="birthday" type="date" name="birthday" 
                             style="margin-right: 10px;" disabled>
-                        <input id="cpf" type="text" name="cpf" pattern="\d{3}.\d{3}.\d{3}-\d{1,2}" placeholder="CPF"
+                            <!-- pattern="\d{3}.\d{3}.\d{3}-\d{1,2}" -->
+                        <input id="cpf" type="text" name="cpf" placeholder="CPF"
                             disabled>
                     </div>
                     <div class="row d-flex">

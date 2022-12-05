@@ -32,13 +32,12 @@ async function updateUser() {
         data[field] = form.elements[field].value;
     }
     
-    console.log(data)
     await fetch('php/user/update.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: data
+        body: JSON.stringify(data)
     })
     .then((data) => data.json())
     .then((res) => {
@@ -46,5 +45,6 @@ async function updateUser() {
             alert('Falha ao atualizar perfil: ', res['errorMsg']);
             return;
         }
+        console.log(res);
     });
 }
