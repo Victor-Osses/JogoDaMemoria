@@ -1,0 +1,17 @@
+section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#ranking {
+    margin: 0 auto;
+}
+
+td, th {
+    padding: 10px 20px;
+    border: 1px solid var(--tertiary-color);
+}
+
+td {
+    text-align: center;
+}

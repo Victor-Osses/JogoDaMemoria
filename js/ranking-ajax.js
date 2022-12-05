@@ -5,7 +5,7 @@ async function createRanking() {
     const ranking = document.getElementById('ranking');
 
     const headerRow = document.createElement('tr');
-    for (let header of ['Name', 'Grid Size', 'Duration', 'Score']) {
+    for (let header of ['Nickname', 'Grid Size', 'Duration', 'Score']) {
         const th = document.createElement('th');
         th.innerText = header;
         headerRow.appendChild(th);
@@ -14,7 +14,7 @@ async function createRanking() {
 
     for (let data of rankingData) {
         const tr = document.createElement('tr');
-        for (let field of ['userName', 'gameGrid', 'gameDuration', 'gameScore']) {
+        for (let field of ['userNickName', 'gameGrid', 'gameDuration', 'gameScore']) {
             const td = document.createElement('td');
             td.innerText = data[field];
             tr.appendChild(td);

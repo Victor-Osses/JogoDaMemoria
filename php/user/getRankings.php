@@ -12,7 +12,7 @@ $out = array("success" => true);
 $out["data"] = array();
 
 try {
-    $sql = "SELECT game.userId, userName, gameGrid, gameDuration, gameScore FROM game
+    $sql = "SELECT game.userId, userNickName, gameGrid, gameDuration, gameScore FROM game
             INNER JOIN usuario ON usuario.userId=game.userId
             WHERE gameResult=1 AND gameMode=$gameMode
             ORDER BY gameGrid desc, gameScore desc";

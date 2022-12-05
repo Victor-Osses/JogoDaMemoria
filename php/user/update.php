@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once("../config.php");
 require_once("../functions.php");
@@ -17,7 +18,6 @@ function processInput()
 
 $INPUT = processInput();
 
-// TODO: usar ID do usuário logado
 $USERID = $_SESSION['userId'];
 
 $out = array("success" => true);

@@ -16,6 +16,7 @@ if (!isset($_SESSION['userId'])) {
   <!-- My Style -->
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/ranking.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" >
@@ -34,7 +35,7 @@ if (!isset($_SESSION['userId'])) {
         ?>
     </header>
 
-    <section style="text-align: center; margin-top: 50px;">
+    <section>
       <h2 class="nav_link1">RANKING</h2>
       <br>
       <table id="ranking"></table>
