@@ -16,9 +16,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (mysqli_num_rows($result) == 1) {
             $user = $result->fetch_assoc();
             $_SESSION['userId'] = $user['userId'];
-            unset($user['userId']);
-            if (!isset($_COOKIE["user"]))
-                setcookie("user", json_encode($user), time() + 60 * 60 * 24 * 2);
             $out['success'] = true;
             header("Location: index.php");
         } else

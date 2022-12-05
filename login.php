@@ -32,11 +32,7 @@ if (isset($_SESSION['userId'])) {
         <h2 style="text-align: center; margin: 15px 0px;">
             <?php
                 if (isset($out)) {
-                    if ($out['success']) {
-                        echo "Login bem sucedido!";
-                    } else {
-                        echo $out['errorMsg'];
-                    }
+                    echo $out['errorMsg'];
                 }
             ?>
         </h2>

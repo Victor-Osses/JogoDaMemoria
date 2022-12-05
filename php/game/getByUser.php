@@ -1,10 +1,12 @@
 <?php
 
 require_once ("../config.php");
+session_start();
 
 $out = array("success" => true);
 $out['data'] = array();
-$CUI = 1;
+$CUI = (int)$_SESSION['userId'];
+
 try {
     $sql = "SELECT gameResult, gameMode, gameGrid, gameScore, gameDuration, createTime from game WHERE userId = '{$CUI}' order by createTime desc";
     $result = $DB['conn']->query($sql);

@@ -65,12 +65,14 @@ require_once("php/user/create.php");
         <label for="passwordconfirmation"></label>
         <input type="password" placeholder="Confirmar Senha" id="passwordconfirmation" name="password2" required>
 
-        <input type="submit" class="btn bg-primary" name="submit">
+        <input type="submit" id="btnRegisterUser" class="btn bg-primary" name="submit">
 
         <div class="botaovoltar">
             <a href="login.php">Já está cadastrado? Faça login!</a>
         </div>
     </form>
+
+    <script src="js/cadastro.js"></script>
 </body>
 
 <!--
@@ -80,18 +82,4 @@ require_once("php/user/create.php");
     https://www.youtube.com/watch?v=3e66-ZPPqWg
     https://www.w3schools.com/css/css3_buttons.asp
 -->
-
 </html>
-
-<script type="text/javascript">
-
-function verificarSenha() {
-  let senha = document.getElementById("userPassword").value;
-  let confirmacaosenha = document.getElementById("password2").value;
-
-  if (senha != confirmacaosenha) {
-    alert("As senhas não são iguais");
-  }
-  
-}
-    </script>

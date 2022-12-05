@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
     $nickName = sanitize($_POST['nickname']);
     $nomeUsuario = sanitize($_POST['userRealname']);
     $nascimento = sanitize($_POST['userBirth']);
-    $cpf = (int)$_POST['userCpf'];
+    $cpf = (int)$_POST['userCpf']; 
     $telefone =(int)$_POST['userPhone'];
     $email = sanitize($_POST['userEmail']);
     $senha = sanitize($_POST['userPassword']);
@@ -20,9 +20,15 @@ if(isset($_POST['submit'])){
             $sql = "SELECT userId FROM usuario WHERE userCpf = '$cpf'";
             $result = $DB['conn']->query($sql);
             if(mysqli_num_rows($result) == 0) {
-                $sql = "INSERT INTO usuario (userNickName, userBirthday, userCpf, userPhone, userEmail, userPassword, userName) VALUES ('$nickName', '$nascimento', '$cpf', '$telefone', '$email', '$senha', '$nomeUsuario')";
+                $sql = "SELECT userEmail FROM usuario WHERE userEmail = '$email'";
                 $result = $DB['conn']->query($sql);
-                $out['success'] = true;
+                if(mysqli_num_rows($result) == 0) {
+                    $sql = "INSERT INTO usuario (userNickName, userBirthday, userCpf, userPhone, userEmail, userPassword, userName) VALUES ('$nickName', '$nascimento', '$cpf', '$telefone', '$email', '$senha', '$nomeUsuario')";
+                    $result = $DB['conn']->query($sql);
+                    $out['success'] = true;
+                } else {
+                    $out['errorMsg'] = "E-mail indisponível!";
+                }
             } else {
                 $out['errorMsg'] = "CPF indisponível!";
             }

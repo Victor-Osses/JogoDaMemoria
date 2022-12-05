@@ -5,21 +5,26 @@ async function createRanking() {
     const ranking = document.getElementById('ranking');
 
     const headerRow = document.createElement('tr');
-    for (let header of ['Nickname', 'Grid Size', 'Duration', 'Score']) {
+    for (let header of ['#', 'Nickname', 'Grid Size', 'Duration', 'Score']) {
         const th = document.createElement('th');
         th.innerText = header;
         headerRow.appendChild(th);
     }
     ranking.appendChild(headerRow);
 
+    let count = 1;
     for (let data of rankingData) {
         const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.innerHTML = count;
+        tr.appendChild(td);
         for (let field of ['userNickName', 'gameGrid', 'gameDuration', 'gameScore']) {
-            const td = document.createElement('td');
-            td.innerText = data[field];
-            tr.appendChild(td);
+                const td = document.createElement('td');
+                td.innerText = data[field];
+                tr.appendChild(td);
         }
         ranking.appendChild(tr);
+        count++;
     }
 }
 
