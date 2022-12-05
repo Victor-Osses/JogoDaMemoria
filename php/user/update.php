@@ -18,7 +18,7 @@ function processInput()
 $INPUT = processInput();
 
 // TODO: usar ID do usuário logado
-$USERID = 0;
+$USERID = $_SESSION['userId'];
 
 $out = array("success" => true);
 

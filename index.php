@@ -119,6 +119,7 @@ if (!isset($_SESSION['userId'])) {
     </section>
 
     <script src="js/ranking.js"></script>
+    <script src="js/index-ajax.js"></script>
 </body>
 
 </html>
