@@ -1,11 +1,8 @@
 <?php
-/*session_start();
-require_once('verificacao.php');
-verificacao('login.php');
-*/
-include('verificandoLogin.php');
-include('conexao.php');
-include('verificacao;php')
+session_start();
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,20 +31,9 @@ include('verificacao;php')
 
 <body>
     <header id="game-header">
-        <nav class="d-flex align-items-center justify-content-between flex-wrap">
-            <a href="index.php">
-                <h1 class="memory-title">memory</h1>
-            </a>
-            <ul class="items-list d-flex align-items-center">
-                <li class="menu-item d-flex align-items-center">
-                    <a href="perfil.php">
-                        <img class="img-perfil" alt="Imagem de perfil de usuário"
-                            src="img/perfil.png"></a>
-                </li>
-                <li class="menu-item"><a href="ranking.php" class="bg-primary">Ranking</a></li>
-                <li class="menu-item"><a href="login.php" class="bg-secondary" style="color: #fff;">Logout</a></li>
-            </ul>
-        </nav>
+        <?php
+        require_once("includes/menu.php");
+        ?>
     </header>
     <main id="game-main">
         <div class="game-container">
@@ -67,11 +53,9 @@ include('verificacao;php')
                         <option value="8" selected>8x8</option>
                     </select>
                     <div class="timer-container bg-tertiary d-flex align-items-center justify-content-between">
-                        <div class="icon-container time-icon-container d-flex align-items-center"
-                            style="margin-right: 4px;">
+                        <div class="icon-container time-icon-container d-flex align-items-center" style="margin-right: 4px;">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
-                                <path
-                                    d="M16.85 5V.85h14.3V5Zm5.1 23.4h4.1V16.8h-4.1ZM24 46.25q-4 0-7.5-1.525T10.375 40.6Q7.75 38 6.25 34.5 4.75 31 4.75 27t1.5-7.5q1.5-3.5 4.125-6.125t6.125-4.15Q20 7.7 24 7.7q3.45 0 6.525 1.125T35.95 12l3-3 3 2.95-3 3q1.85 2.1 3.1 5.05 1.25 2.95 1.25 7 0 4-1.525 7.5t-4.15 6.1Q35 43.2 31.5 44.725T24 46.25Zm0-4.75q6.1 0 10.325-4.2T38.55 27q0-6.1-4.225-10.325T24 12.45q-6.1 0-10.325 4.225T9.45 27q0 6.1 4.225 10.3Q17.9 41.5 24 41.5Zm0-14.45Z" />
+                                <path d="M16.85 5V.85h14.3V5Zm5.1 23.4h4.1V16.8h-4.1ZM24 46.25q-4 0-7.5-1.525T10.375 40.6Q7.75 38 6.25 34.5 4.75 31 4.75 27t1.5-7.5q1.5-3.5 4.125-6.125t6.125-4.15Q20 7.7 24 7.7q3.45 0 6.525 1.125T35.95 12l3-3 3 2.95-3 3q1.85 2.1 3.1 5.05 1.25 2.95 1.25 7 0 4-1.525 7.5t-4.15 6.1Q35 43.2 31.5 44.725T24 46.25Zm0-4.75q6.1 0 10.325-4.2T38.55 27q0-6.1-4.225-10.325T24 12.45q-6.1 0-10.325 4.225T9.45 27q0 6.1 4.225 10.3Q17.9 41.5 24 41.5Zm0-14.45Z" />
                             </svg>
                         </div>
                         <span id="timer-text">00:00</span>
@@ -89,19 +73,18 @@ include('verificacao;php')
                         </button>
                     </div>
 
-                    <button id="btn-cheating-mode" disabled class="btn d-flex align-items-center justify-content-between"
-                        style="margin-right: 10px;">
+                    <button id="btn-cheating-mode" disabled class="btn d-flex align-items-center justify-content-between" style="margin-right: 10px;">
                         <img src="img/hacker.png" alt="Botão de Trapaça">
                     </button>
 
-                    <div class="icon-container d-flex align-items-center"  style="margin-right: 10px;">
+                    <div class="icon-container d-flex align-items-center" style="margin-right: 10px;">
                         <button id="btn-pause" disabled class="btn d-flex align-items-center justify-content-between">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#1F3540" viewBox="0 0 48 48">
                                 <path d="M28.7 37V11h6.9v26Zm-16.3 0V11h6.95v26Z" />
                             </svg>
                         </button>
                     </div>
-                  
+
                 </div>
 
             </div>
@@ -110,8 +93,7 @@ include('verificacao;php')
         </div>
     </main>
 
-    <div onclick="openSidebar()"
-        class="btn btn-historic bg-secondary d-flex justify-content-center align-items-center p-0 position-relative">
+    <div onclick="openSidebar()" class="btn btn-historic bg-secondary d-flex justify-content-center align-items-center p-0 position-relative">
         <img src="img/historico.png" alt="Botãod de histórico de partidas">
     </div>
 
@@ -122,8 +104,7 @@ include('verificacao;php')
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet">
 
                         <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" stroke="none">
-                            <path
-                                d="M16 304 c-24 -24 -20 -34 36 -91 l52 -53 -53 -54 c-41 -42 -52 -58 -47 -74 14 -43 45 -38 102 19 l54 53 54 -53 c42 -41 58 -52 74 -47 43 14 38 45 -19 102 l-53 54 53 54 c57 57 62 88 19 102 -16 5 -32 -6 -74 -47 l-54 -53 -53 52 c-57 56 -67 60 -91 36z" />
+                            <path d="M16 304 c-24 -24 -20 -34 36 -91 l52 -53 -53 -54 c-41 -42 -52 -58 -47 -74 14 -43 45 -38 102 19 l54 53 54 -53 c42 -41 58 -52 74 -47 43 14 38 45 -19 102 l-53 54 53 54 c57 57 62 88 19 102 -16 5 -32 -6 -74 -47 l-54 -53 -53 52 c-57 56 -67 60 -91 36z" />
                         </g>
                     </svg>
                 </button>

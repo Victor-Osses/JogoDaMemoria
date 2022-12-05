@@ -9,6 +9,7 @@ create table usuario (
     userName varchar(100) not null,
     userBirthday date not null,
     userPhone int not null,
+    userNickName varchar(50) unique not null,
     primary key (userId)
 );
 

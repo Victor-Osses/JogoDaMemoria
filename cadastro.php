@@ -1,20 +1,37 @@
 <?php
-//créditos a https://www.youtube.com/watch?v=QOeDE7nPDq0&list=PLSHNk_yA5fNjoIRNHV-3FprsN3NWPcnnK&index=3
 if(isset($_POST['submit'])){
-    
-    include_once('settings.php');
+    require_once('php/config.php');
+    require_once('php/functions.php');
 
-    $nomeUsuario = $_POST['userName'];
-    $nomeReal= $_POST['userRealname'];
-    $nascimento = $_POST['userBirth'];
-    $cpf = $_POST['userCpf'];
-    $telefone = $_POST['userPhone'];
-    $email = $_POST['userEmail'];
-    $senha = $_POST['userPassword'];
+    $nickName = sanitize($_POST['nickname']);
+    $nomeUsuario = sanitize($_POST['userRealname']);
+    $nascimento = sanitize($_POST['userBirth']);
+    $cpf = (int)$_POST['userCpf'];
+    $telefone =(int)$_POST['userPhone'];
+    $email = sanitize($_POST['userEmail']);
+    $senha = sanitize($_POST['userPassword']);
+    $out = array("success" => false);
 
-    $sql = mysqli_query($conexao, "INSERT INTO usuario(userName, userRealname, userBirth, userCpf, userPhone, userEmail, userPassword) 
-    VALUES('$nomeUsuario', '$nomeReal', '$nascimento', '$cpf', '$telefone', '$email', '$senha')");
-
+    try {
+        $sql = "SELECT userId FROM usuario WHERE userNickName = '$nickName'";
+        $result = $DB['conn']->query($sql);
+        if(mysqli_num_rows($result) == 0) {
+            $sql = "SELECT userId FROM usuario WHERE userCpf = '$cpf'";
+            $result = $DB['conn']->query($sql);
+            if(mysqli_num_rows($result) == 0) {
+                $sql = "INSERT INTO usuario (userNickName, userBirthday, userCpf, userPhone, userEmail, userPassword, userName) VALUES ('$nickName', '$nascimento', '$cpf', '$telefone', '$email', '$senha', '$nomeUsuario')";
+                $result = $DB['conn']->query($sql);
+                $out['success'] = true;
+            } else {
+                $out['errorMsg'] = "CPF indisponível!";
+            }
+        } else {
+            $out['errorMsg'] = "Nickname indisponível!";
+        }
+    }
+    catch (Exception $e) {
+        $out['errorMsg'] = "Erro desconhecido: " . $e->getMessage();
+    }
 }
 
 ?>
@@ -42,12 +59,23 @@ if(isset($_POST['submit'])){
     </header>
     <div class="mensagenstopo">
         <h2 style="text-align: center;">Bem vindo ao Memory!<br>Para jogar, é necessário criar uma conta.</h2>
-        <h4 style="text-align: center;">Preencha o formulário abaixo com suas informações pessoais.</h4>
+        <h3 style="text-align: center; margin: 15px 0px">Preencha o formulário abaixo com suas informações pessoais.</h3>
+        <h3 style="text-align: center; color: orange;">
+            <?php 
+                if(isset($out)) {
+                    if($out['success']) {
+                        echo "Cadastro bem sucedido!";
+                    } else {
+                        echo $out['errorMsg'];
+                    }
+                }
+            ?>
+        </h3>
     </div>
 
     <form action="cadastro.php" method="POST" class="form d-flex flex-column justify-content-center align-items-center">
-        <label for="username"></label>
-        <input type="text" style="margin-right: 10px;" name="userName" id="username" placeholder="Nome do usuário"
+        <label for="nickname"></label>
+        <input type="text" style="margin-right: 10px;" name="nickname" id="nickname" placeholder="Nickname"
             required>
 
         <label for="realname"></label>

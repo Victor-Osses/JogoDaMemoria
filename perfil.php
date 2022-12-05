@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,20 +19,9 @@
 
 <body>
     <header id="game-header">
-        <nav class="d-flex align-items-center justify-content-between flex-wrap">
-            <a href="index.php">
-                <h1 class="memory-title">memory</h1>
-            </a>
-            <ul class="items-list d-flex align-items-center">
-                <li class="menu-item d-flex align-items-center">
-                    <a href="perfil.php">
-                        <img class="img-perfil" alt="Imagem de perfil de usuário"
-                            src="img/perfil.php"></a>
-                </li>
-                <li class="menu-item"><a href="ranking.php" class="bg-primary">Ranking</a></li>
-                <li class="menu-item"><a href="login.php" class="bg-secondary" style="color: #fff;">Logout</a></li>
-            </ul>
-        </nav>
+        <?php
+        require_once("includes/menu.php");
+        ?>
     </header>
 
     <section style="width: 80vw; margin: auto;">

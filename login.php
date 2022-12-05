@@ -1,10 +1,46 @@
+<?php
+session_start();
+
+if (isset($_SESSION['userId'])) {
+    header("Location: index.php");
+}
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    require_once('php/config.php');
+    require_once('php/functions.php');
+
+    $out = array("success" => false);
+
+    $email = sanitize($_POST['email']);
+    $password = sanitize($_POST['password']);
+
+    try {
+        $sql = "SELECT userId, userNickName, userName FROM usuario WHERE userEmail = '$email' AND userPassword = '$password'";
+        $result = $DB['conn']->query($sql);
+
+        if (mysqli_num_rows($result) == 1) {
+            $user = $result->fetch_assoc();
+            $_SESSION['userId'] = $user['userId'];
+            unset($user['userId']);
+            if (!isset($_COOKIE["user"]))
+                setcookie("user", json_encode($user), time() + 60 * 60 * 24 * 2);
+            $out['success'] = true;
+            header("Location: index.php");
+        } else
+            $out['errorMsg'] = "Email e/ou senha incorretos!";
+    } catch (\Exception $e) {
+        $out['errorMsg'] = "Erro desconhecido: " . $e->getMessage();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <title>Memory</title>
-  
+
     <!-- My Style -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menu.css">
@@ -18,10 +54,21 @@
             </a>
         </nav>
     </header>
-    <form action="#" method="GET" class="form d-flex align-items-center justify-content-center flex-column">
+    <form action="login.php" method="POST" class="form d-flex align-items-center justify-content-center flex-column">
         <h1>Login</h1>
-        <input type="email" placeholder="E-mail" name="email">
-        <input type="password" placeholder="Senha" name="password">
+        <h2 style="text-align: center; margin: 15px 0px;">
+            <?php
+                if (isset($out)) {
+                    if ($out['success']) {
+                        echo "Login bem sucedido!";
+                    } else {
+                        echo $out['errorMsg'];
+                    }
+                }
+            ?>
+        </h2>
+        <input type="email" placeholder="E-mail" required name="email">
+        <input type="password" placeholder="Senha" required name="password">
         <div class="botao">
             <button type="submit" name="loginUsuario" class="btn bg-primary">Submit</button>
         </div>
