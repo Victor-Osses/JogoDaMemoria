@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/perfil.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="js/perfil-ajax.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 <li class="menu-item d-flex align-items-center">
                     <a href="perfil.php">
                         <img class="img-perfil" alt="Imagem de perfil de usuário"
-                            src="img/perfil.php"></a>
+                            src="img/perfil.png"></a>
                 </li>
                 <li class="menu-item"><a href="ranking.php" class="bg-primary">Ranking</a></li>
                 <li class="menu-item"><a href="login.php" class="bg-secondary" style="color: #fff;">Logout</a></li>

@@ -35,6 +35,7 @@ async function getRankingData() {
     .then((res) => {
         if (!res['success']) {
             alert('Falha ao acessar ranking: ' + res['errorMsg']);
+            return;
         }
         return res['data'];
     });
