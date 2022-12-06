@@ -7,11 +7,12 @@ if(isset($_POST['submit'])){
     $nickName = sanitize($_POST['nickname']);
     $nomeUsuario = sanitize($_POST['userRealname']);
     $nascimento = sanitize($_POST['userBirth']);
-    $cpf = (int)$_POST['userCpf']; 
-    $telefone =(int)$_POST['userPhone'];
+    $cpf = sanitize($_POST['userCpf']); 
+    $telefone = sanitize($_POST['userPhone']);
     $email = sanitize($_POST['userEmail']);
     $senha = hash("sha256",  sanitize($_POST['userPassword']) . "memorygame");
     $out = array("success" => false);
+
 
     try {
         $sql = "SELECT userId FROM usuario WHERE userNickName = '$nickName'";
@@ -26,6 +27,7 @@ if(isset($_POST['submit'])){
                     $sql = "INSERT INTO usuario (userNickName, userBirthday, userCpf, userPhone, userEmail, userPassword, userName) VALUES ('$nickName', '$nascimento', '$cpf', '$telefone', '$email', '$senha', '$nomeUsuario')";
                     $result = $DB['conn']->query($sql);
                     $out['success'] = true;
+                    $out['sql'] = $sql;
                 } else {
                     $out['errorMsg'] = "E-mail indisponível!";
                 }

@@ -81,7 +81,6 @@ require_once("php/user/get.php");
             document.getElementsByName("cpf")[0].value = userData['userCpf'];
             document.getElementsByName("phone")[0].value = userData['userPhone'];
             document.getElementsByName("email")[0].value = userData['userEmail'];
-            document.getElementsByName("password")[0].value = userData['userPassword'];
         })
     </script>
 </body>

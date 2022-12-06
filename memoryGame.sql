@@ -4,11 +4,11 @@ use memoryGame;
 create table usuario (
     userId int not null auto_increment,
     userEmail varchar(200) unique not null,
-    userCpf int unique not null,
+    userCpf char(20) unique not null,
     userPassword char(64) not null,
     userName varchar(100) not null,
     userBirthday date not null,
-    userPhone int not null,
+    userPhone char(20) not null,
     userNickName varchar(50) unique not null,
     primary key (userId)
 );
