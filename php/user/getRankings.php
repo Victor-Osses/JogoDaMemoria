@@ -16,7 +16,7 @@ try {
     $sql = "SELECT game.userId, userNickName, gameGrid, gameDuration, gameScore FROM game
             INNER JOIN usuario ON usuario.userId=game.userId
             WHERE gameResult=1
-            ORDER BY gameGrid desc, gameDuration asc, gameScore desc limit 10";
+            ORDER BY gameGrid desc, gameDuration asc, gameScore asc limit 10";
 
     $result = $DB["conn"]->query($sql);
     while ($row = $result->fetch_assoc()) {

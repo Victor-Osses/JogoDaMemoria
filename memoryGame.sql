@@ -21,7 +21,7 @@ create table game (
     gameMode binary not null,
     gameDuration int not null,
     gameScore tinyint not null,
-    createTime date not null,
+    createTime datetime not null,
     primary key (gameId),
     foreign key (userId) references usuario(userId) on delete cascade
 );
