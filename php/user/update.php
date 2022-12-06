@@ -24,21 +24,37 @@ $out = array("success" => false);
 
 try {
     $n = $INPUT->{'full-name'};
-    $sql = "SELECT userId from usuario WHERE userNickName = '{$INPUT->{'user'}}'";
+    $sql = "SELECT userId FROM usuario WHERE userId = '$USERID' and userPassword = '{$INPUT->password}'";
     $result = $DB["conn"]->query($sql);
-    if(mysqli_num_rows($result) == 0) {
-        $sql = "UPDATE usuario
-        SET userEmail = '{$INPUT->email}', userCpf = '{$INPUT->cpf}', userPassword = '{$INPUT->password}',
-            userName = '{$INPUT->{'full-name'}}', userNickName = '{$INPUT->{'user'}}', userBirthday = '{$INPUT->birthday}', userPhone = '{$INPUT->phone}'
-        WHERE userId = '$USERID'";
-        $DB["conn"]->query($sql);
-        $out["success"] = true;
+    if (mysqli_num_rows($result) != 0 ) {
+        $sql = "SELECT userId from usuario WHERE userNickName = '{$INPUT->{'user'}}' and userId != '$USERID'";
+        $result = $DB["conn"]->query($sql);
+        if (mysqli_num_rows($result) == 0) {
+            $sql = "SELECT userId from usuario WHERE userCpf = '{$INPUT->cpf}' and userId != '$USERID'";
+            $result = $DB["conn"]->query($sql);
+            if (mysqli_num_rows($result) == 0) {
+                $sql = "SELECT userId from usuario WHERE userEmail = '{$INPUT->email}' and userId != '$USERID'";
+                $result = $DB["conn"]->query($sql);
+                if (mysqli_num_rows($result) == 0) {
+                    $sql = "UPDATE usuario
+                SET userEmail = '{$INPUT->email}', userCpf = '{$INPUT->cpf}', userPassword = '{$INPUT->password}',
+                    userName = '{$INPUT->{'full-name'}}', userNickName = '{$INPUT->{'user'}}', userBirthday = '{$INPUT->birthday}', userPhone = '{$INPUT->phone}'
+                WHERE userId = '$USERID'";
+                    $DB["conn"]->query($sql);
+                    $out["success"] = true;
+                } else {
+                    $out["errorMsg"] = "Email indisponível!";
+                }
+            } else {
+                $out["errorMsg"] = "CPF indisponível!";
+            }
+        } else {
+            $out["errorMsg"] = "Nickname indisponível!";
+        }
     } else {
-        $out["success"] = false;
-        $out["errorMsg"] = "Nickname indisponível!";
+        $out["errorMsg"] = "Senha incorreta!";
     }
 } catch (\Exception $e) {
-    $out["success"] = false;
     $out["errorMsg"] = "Erro desconhecido: " . $e->getMessage();
 }
 

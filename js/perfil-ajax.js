@@ -45,10 +45,14 @@ async function updateUser() {
     .then((data) => data.json())
     .then((res) => {
         if (!res['success']) {
-            document.getElementById('msg-container').innerHTML = res ['errorMsg'];
+            document.getElementById('msg-container').textContent = res ['errorMsg'];
             return;
         } else {
-            document.getElementById('msg-container').innerHTML = "Atualização concluiída com sucesso!";
+            document.getElementById('msg-container').textContent = "Atualização concluiída com sucesso!";
         }
+
+        setTimeout(() => {
+            document.getElementById('msg-container').textContent = "";
+        }, 1500);
     });
 }

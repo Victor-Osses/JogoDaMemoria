@@ -59,9 +59,9 @@ require_once("php/user/get.php");
                         <input id="email" type="email" name="email" placeholder="Email" disabled>
                     </div>
                     <div class="row d-flex">
-                        <input id="password" type="password" name="password" placeholder="Senha"
+                        <input id="password" type="password" required name="password" placeholder="Senha"
                             style="margin-right: 10px;" disabled>
-                        <input id="password-repeat" type="password" name="password-repeat" placeholder="Confirmar Senha"
+                        <input id="password-repeat" type="password" required name="password-repeat" placeholder="Confirmar Senha"
                             disabled>
                     </div>
                 </form>
