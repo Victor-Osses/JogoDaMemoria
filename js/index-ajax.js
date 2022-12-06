@@ -25,7 +25,7 @@ async function registerGame() {
 }
 
 async function getHistoryGames() {
-    newGame = fetch('php/game/getByUser.php', {
+    fetch('php/game/getByUser.php', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

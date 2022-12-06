@@ -65,7 +65,7 @@ require_once("php/user/create.php");
         <label for="passwordconfirmation"></label>
         <input type="password" placeholder="Confirmar Senha" id="passwordconfirmation" name="password2" required>
 
-        <input type="submit" id="btnRegisterUser" class="btn bg-primary" name="submit">
+        <button type="submit" id="btnRegisterUser" class="btn bg-primary" name="submit" style="font-size: 18px">Cadastrar</button>
 
         <div class="botaovoltar">
             <a href="login.php">Já está cadastrado? Faça login!</a>

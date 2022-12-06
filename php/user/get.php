@@ -1,13 +1,12 @@
 <?php
 
 require_once('php/config.php');
-require_once('php/functions.php');
 
 if(!$_SESSION) {
     session_start();
 }
 
-$out = array("success" => false);
+$out = array("success" => true);
 $CUI = (int)$_SESSION['userId']; // Current User Id
 $out['userData'] = array();
 
@@ -16,6 +15,7 @@ try {
     $result = $DB['conn']->query($sql);
     $out['userData'] = $result->fetch_assoc();
 } catch (\Exception $e) {
+    $out['success'] = false;
     $out['errorMsg'] = "Erro desconhecido: " . $e->getMessage();
 }
 

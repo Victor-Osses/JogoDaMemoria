@@ -11,7 +11,6 @@ $gameDuration = (int)$data['gameDuration'];
 $gameScore = (int)$data['gameScore'];
 $gameResult = (int)$data['gameResult'];
 $out = array("success" => true);
-$out['data'] = array();
 $CUI = (int)$_SESSION['userId'];
 
 try {
