@@ -37,8 +37,8 @@ try {
                 $result = $DB["conn"]->query($sql);
                 if (mysqli_num_rows($result) == 0) {
                     $sql = "UPDATE usuario
-                SET userEmail = '{$INPUT->email}', userCpf = '{$INPUT->cpf}', userPassword = '{$INPUT->password}',
-                    userName = '{$INPUT->{'full-name'}}', userNickName = '{$INPUT->{'user'}}', userBirthday = '{$INPUT->birthday}', userPhone = '{$INPUT->phone}'
+                SET userEmail = '{$INPUT->email}', userPassword = '{$INPUT->password}',
+                    userName = '{$INPUT->{'full-name'}}', userPhone = '{$INPUT->phone}'
                 WHERE userId = '$USERID'";
                     $DB["conn"]->query($sql);
                     $out["success"] = true;

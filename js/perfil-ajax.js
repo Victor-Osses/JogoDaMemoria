@@ -16,7 +16,9 @@ window.addEventListener('DOMContentLoaded', () => {
 function toggleFormEnabling() {
     const formFields = document.querySelectorAll('#user-info-form input');
     for (let field of formFields) {
-        field.disabled = !field.disabled;
+        if (['cpf', 'birthday', 'user'].indexOf(field.id) < 0) {
+            field.disabled = !field.disabled;
+        }
     }
 
     const updateBtn = document.getElementById('update-btn');
@@ -28,11 +30,11 @@ async function updateUser() {
     const data = {};
 
     if (form.elements['password'].value !== form.elements['password-repeat'].value) {
-        alert("Senha e confirmação de senha não são iguais!");
+        displayMessage("Senha e confirmação de senha não são iguais!");
         return;
     }
 
-    for (let field of ['user', 'full-name', 'birthday', 'cpf', 'phone', 'email', 'password']) {
+    for (let field of ['full-name', 'phone', 'email', 'password']) {
         data[field] = form.elements[field].value;
     }
     await fetch('php/user/update.php', {
@@ -45,14 +47,17 @@ async function updateUser() {
     .then((data) => data.json())
     .then((res) => {
         if (!res['success']) {
-            document.getElementById('msg-container').textContent = res ['errorMsg'];
+            displayMessage(res['errorMsg']);
             return;
         } else {
-            document.getElementById('msg-container').textContent = "Atualização concluiída com sucesso!";
+            displayMessage("Atualização concluída com sucesso!");
         }
-
-        setTimeout(() => {
-            document.getElementById('msg-container').textContent = "";
-        }, 1500);
     });
+}
+
+function displayMessage(msg) {
+    document.getElementById('msg-container').textContent = msg;
+    setTimeout(() => {
+        document.getElementById('msg-container').textContent = "";
+    }, 1500);
 }
