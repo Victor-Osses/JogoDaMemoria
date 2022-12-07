@@ -17,7 +17,6 @@ function processInput()
 }
 
 $INPUT = processInput();
-
 $USERID = $_SESSION['userId'];
 
 $out = array("success" => false);
