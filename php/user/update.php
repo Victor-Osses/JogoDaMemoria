@@ -22,33 +22,20 @@ $USERID = $_SESSION['userId'];
 $out = array("success" => false);
 
 try {
-    $n = $INPUT->{'full-name'};
     $sql = "SELECT userId FROM usuario WHERE userId = '$USERID' and userPassword = '{$INPUT->password}'";
     $result = $DB["conn"]->query($sql);
-    if (mysqli_num_rows($result) != 0 ) {
-        $sql = "SELECT userId from usuario WHERE userNickName = '{$INPUT->{'user'}}' and userId != '$USERID'";
+    if (mysqli_num_rows($result) == 1 ) {
+        $sql = "SELECT userId from usuario WHERE userEmail = '{$INPUT->email}' and userId != '$USERID'";
         $result = $DB["conn"]->query($sql);
         if (mysqli_num_rows($result) == 0) {
-            $sql = "SELECT userId from usuario WHERE userCpf = '{$INPUT->cpf}' and userId != '$USERID'";
-            $result = $DB["conn"]->query($sql);
-            if (mysqli_num_rows($result) == 0) {
-                $sql = "SELECT userId from usuario WHERE userEmail = '{$INPUT->email}' and userId != '$USERID'";
-                $result = $DB["conn"]->query($sql);
-                if (mysqli_num_rows($result) == 0) {
-                    $sql = "UPDATE usuario
-                SET userEmail = '{$INPUT->email}', userPassword = '{$INPUT->password}',
-                    userName = '{$INPUT->{'full-name'}}', userPhone = '{$INPUT->phone}'
-                WHERE userId = '$USERID'";
-                    $DB["conn"]->query($sql);
-                    $out["success"] = true;
-                } else {
-                    $out["errorMsg"] = "Email indisponível!";
-                }
-            } else {
-                $out["errorMsg"] = "CPF indisponível!";
-            }
+            $sql = "UPDATE usuario
+        SET userEmail = '{$INPUT->email}', userPassword = '{$INPUT->password}',
+            userName = '{$INPUT->{'full-name'}}', userPhone = '{$INPUT->phone}'
+        WHERE userId = '$USERID'";
+            $DB["conn"]->query($sql);
+            $out["success"] = true;
         } else {
-            $out["errorMsg"] = "Nickname indisponível!";
+            $out["errorMsg"] = "Email indisponível (e-mail é unique)!";
         }
     } else {
         $out["errorMsg"] = "Senha incorreta!";
